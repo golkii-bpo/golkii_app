@@ -1,0 +1,26 @@
+.sidebar{
+    background-color: #262626;
+}
+
+.sidebar .nav:not(.sub-menu) > .nav-item {
+    border-bottom: 1px solid #333232 !important;
+}
+.sidebar .nav .nav-item .nav-link {
+    color: #fff !important;
+}
+.sidebar .nav .nav-item .nav-link span{
+    line-height: 30px;
+    font-size: 16px !important;
+    height: auto;
+    white-space: nowrap;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+}
+.footer{
+    background-color: #262626;
+    /* position: absolute !important;
+    width: 100% !important;
+    bottom: 0 !important; */
+}
+.footer a{
+    color: rgb(255, 214, 70) !important;
+}

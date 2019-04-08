@@ -1,0 +1,22 @@
+html{height: 100%;}
+body{height: 100%;background-color: #fdfdfd}
+.error-main{height: 100% !important;}
+.error-template {padding: 40px 15px;text-align: center;}
+.error-template h1,
+.error-spam 
+ {
+    color:rgb(255, 214, 70);
+    font-weight: bold;
+    font-size: 55px;
+}
+.error-template > h2,.error-details {color: #262626;}
+.error-actions .btn { background-color: rgb(255, 214, 70) ;border:none;color: #262626;border-radius: 50%; }
+.footer{
+    background-color: #262626;
+    position: absolute !important;
+    width: 100% !important;
+    bottom: 0 !important;
+}
+.footer a{
+    color: rgb(255, 214, 70) !important;
+}
