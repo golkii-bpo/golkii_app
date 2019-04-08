@@ -1,3 +1,6 @@
 
 # Se ignora todo los modulos dentro del archivo
 node_modules/
+
+#Se ignora el archivo de configuracion
+.env
