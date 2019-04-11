@@ -3,6 +3,7 @@ require('dotenv/config');
 
 //Importan las librerias
 const express = require('express');
+const ejsLayouts = require("express-ejs-layouts");
 const config = require('config');
 const path = require('path');
 const morgan = require('morgan');
@@ -19,13 +20,15 @@ const logger = winston.createLogger({
     ]
 });
 
-//Variables
-
-//Configuraciones
-app.set('views',path.join(__dirname,'../app/views'));
+//View Config
+app.set('views',path.join(__dirname,'/views'));
 app.set('view engine', 'ejs');
+app.set('layout', 'layouts/main-layout');
+app.use(ejsLayouts);
+
+//Status Resources
 app.use('/resources',express.static(path.join(__dirname,'/public'))); //agregar resource
-app.use('/application',express.static(path.join(__dirname,'../app/components'))); //agregar resource
+app.use('/modules',express.static(path.join(__dirname,'../app/modules'))); //agregar resource
 
 
 //Logger

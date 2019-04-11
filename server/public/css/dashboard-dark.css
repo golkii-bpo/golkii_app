@@ -1,6 +1,7 @@
 /*SideBar*/
 .sidebar{
     background-color: #2A2A2A;
+    border-right: none !important;
 }
 .sidebar .nav:not(.sub-menu) > .nav-item {
     border-bottom: none !important;
@@ -31,7 +32,7 @@
 
 /*Footer*/
 .footer{
-    background-color: #262626;
+    background-color: #e3e3e3;;
     /* position: absolute !important;
     width: 100% !important;
     bottom: 0 !important; */

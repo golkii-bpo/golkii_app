@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/header') %>
+    <%- include('../partials/application')%>
+</head>
+<body ng-app="appGolkii">
+  <div class="container-scroller">
+    <%- include('../partials/navbar')%>
+    <div class="container-fluid page-body-wrapper">
+      <%-include('../partials/sidebar')%>
+      <div class="main-panel">
+        <%-body%>
+        <%- include('../partials/footer') %>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+    <%- include('../partials/scripts')%>
+</body>
+
+</html>
+

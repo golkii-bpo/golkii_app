@@ -7,6 +7,6 @@ mainRouter
 .route('/')
 .get(errorHandler(
     async (req,res) =>{
-        res.status(200).render('page/dashboard',{title:'AppGolkii'});
+        res.status(200).render('page/dashboard/index',{title:'App Golkii'});
     })
 );
