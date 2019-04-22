@@ -8,6 +8,6 @@ errorPage
 .route('/')
 .get(errorHandler(async (req,res)=>{
     return res
-    .status(200)
+    .status(404)
     .render('page/errors/PageNotFound',{title:'Pagina no encontrada',layout:'layouts/error-layout'});
 }));
