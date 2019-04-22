@@ -14,3 +14,38 @@
 {"message":"/Users/Jackzeel/Documents/Desarrollo/AppGolkii/app/views/page/dashboard.ejs:4\n    2| <html lang=\"es\">\n    3|     <head>\n >> 4|         <%- include('./partials/header',{title}) %>\n    5|     </head>\n    6|     <body>\n    7|         <div class=\"wrapper\">\n\ntitle is not defined","level":"error"}
 {"message":"/Users/Jackzeel/Documents/Desarrollo/AppGolkii/app/views/page/dashboard.ejs:4\n    2| <html lang=\"es\">\n    3|     <head>\n >> 4|         <%- include('./partials/header',{title}) %>\n    5|     </head>\n    6|     <body>\n    7|         <div class=\"wrapper\">\n\nCould not find the include file \"./partials/header\"","level":"error"}
 {"message":"Could not find the include file \"(&#39;../partials/scripts&#39;)\"","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
+{"message":"res.status.render is not a function","level":"error"}
