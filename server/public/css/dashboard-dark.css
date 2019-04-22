@@ -1,6 +1,7 @@
 /*SideBar*/
 .sidebar{
     background-color: #2A2A2A;
+    border-right: none !important;
 }
 .sidebar .nav:not(.sub-menu) > .nav-item {
     border-bottom: none !important;
@@ -9,7 +10,6 @@
     color: #d5d5d5 !important;
     font-size: 14px;
 }
-
 .sidebar .nav .nav-item:hover{
     border-radius: 0;
     background-color: #ffd800;

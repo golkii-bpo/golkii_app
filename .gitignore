@@ -4,3 +4,4 @@ node_modules/
 
 #Se ignora el archivo de configuracion
 .env
+.log

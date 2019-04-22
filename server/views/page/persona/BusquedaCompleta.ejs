@@ -1,9 +1,213 @@
-<div class="content-wrapper" ng-controller="Busqueda">
+<div class="content-wrapper" ng-controller="Busqueda" ng-cloak>
   <div class="row">
-    <div class="col-md-12 stretch-card">
+    <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <p class="card-title text-dark">{{message}}</p>
+          <h4 class="card-title">Busqueda Completa</h4>
+          <p class="card-description">
+            Formulario que permite realizar una busqueda de los clientes. Ya sea por medio de su cédula o de su numero
+            Telefónico.
+          </p>
+          <div class="row">
+            <div class="col-md-auto">
+              <div class="form-group row">
+                <div class="col-sm-auto">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="membershipRadios" ng-model="TipoBusqueda"
+                        value="Cedula">
+                      Cedula
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-auto">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="membershipRadios" ng-model="TipoBusqueda"
+                        value="Telefono">
+                      Telefono
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 offset-1">
+              <div class="form-group form-group-sm row">
+                <div class="input-group col-xs-12">
+                  <input type="text" class="form-control form-control-sm" placeholder="Busqueda"
+                    ng-model="Busqueda" />
+                  <span class="input-group-append">
+                    <button class="btn btn-primary py-1" type="button" ng-click="buscar()">Buscar</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-primary">Información General</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Nombre</label>
+                <div class="col-sm-9">
+                  <div class="form-control form-control-sm">{{info.general.nombre}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Cedula</label>
+                <div class="col-sm-6">
+                  <div class="form-control form-control-sm">{{info.general.cedula}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Edad</label>
+                <div class="col-sm-6">
+                  <div class="form-control form-control-sm">{{info.general.edad}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Sexo</label>
+                <div class="col-sm-6">
+                  <div class="form-control form-control-sm">{{info.general.sexo}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <h4 class="card-title text-primary">Datos Demográficos</h4>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Departamento</label>
+                <div class="col-sm-7">
+                  <div class="form-control form-control-sm">{{info.demografia.departamento}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Municipio</label>
+                <div class="col-sm-7">
+                  <div class="form-control form-control-sm">{{info.demografia.municipio}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Domicilio</label>
+                <div class="col-sm-7">
+                  <div class="form-control form-control-sm">{{info.demografia.domicilio}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <h4 class="card-title text-primary">Ingresos</h4>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Ingresos Extras</label>
+                <div class="col-sm-7">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
+                        id="inputGroup-sizing-sm">$</span>
+                    </div>
+                    <div class="form-control form-control-sm">{{info.ingresos.salarioInss}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-auto my-auto">Ingresos Extras</label>
+                <div class="col-sm-7">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
+                        id="inputGroup-sizing-sm">$</span>
+                    </div>
+                    <div class="form-control form-control-sm">{{info.ingresos.salario}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Operadora</th>
+                  <th>Telefono</th>
+                  <th class="text-center">Informacion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Claro</td>
+                  <td><label class="badge badge-primary">53275531</label></td>
+                  <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
+                </tr>
+                <tr>
+                  <td>Movistar</td>
+                  <td><label class="badge badge-danger">53275532</label></td>
+                  <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
+                </tr>
+                <tr>
+                  <td>Movistar</td>
+                  <td><label class="badge badge-primary">53275532</label></td>
+                  <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center"><i class="mr-2 fas fa-money-check-alt"></i> Banco</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">Ficohsa</td>
+                </tr>
+                <tr>
+                  <td class="text-center">Banpro</td>
+                </tr>
+                <tr>
+                  <td class="text-center">Bac</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
