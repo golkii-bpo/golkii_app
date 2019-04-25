@@ -28,7 +28,8 @@ app.use(ejsLayouts);
 
 //Status Resources
 app.use('/resources',express.static(path.join(__dirname,'/public'))); //agregar resource
-app.use('/modules', express.static(path.join(__dirname,'./modules'))); //agregar resource
+app.use('/modules', express.static(path.join(__dirname, './modules'))); //agregar resource
+app.use('/middleware', express.static(path.join(__dirname,'./middleware'))); //agregar resource
 
 
 //Logger
