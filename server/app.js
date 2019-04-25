@@ -26,6 +26,8 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main-layout');
 app.use(ejsLayouts);
 
+console.log(app.get('env'));
+
 //Status Resources
 app.use('/resources',express.static(path.join(__dirname,'/public'))); //agregar resource
 app.use('/modules', express.static(path.join(__dirname, './modules'))); //agregar resource

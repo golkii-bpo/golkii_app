@@ -190,12 +190,26 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th class="text-center"><i class="mr-2 fas fa-money-check-alt"></i> Banco</th>
+                  <th class="text-center" colspan="2"><i class="mr-2 fas fa-money-check-alt"></i> Banco</th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="card in info.cards">
-                  <td class="text-center">{{card.bank}}</td>
+                <tr ng-repeat="card in info.cards" >
+                  <td class="text-center" ng-switch="card.bank" colspan="2">
+                    <img ng-switch-when="BAC" style="border-radius: 0" src="/resources/img/BAC.png">
+                    <img ng-switch-when="BDF" style="border-radius: 0" src="/resources/img/BDF.png" />
+                    <img ng-switch-when="LAFISE" style="border-radius: 0;width: 60px" src="/resources/img/Lafise.png" />
+                    <img ng-switch-when="FICOHSA" style="border-radius: 0;height: 26px;width: 80px" src="/resources/img/Ficohsa.png" />
+                    <img ng-switch-when="SIMAN" style="border-radius: 0;width: 90px" src="/resources/img/Siman.png" />
+                    <img ng-switch-when="BANPRO" style="border-radius: 0;width: 60px" src="/resources/img/Banpro.png" />
+                    <img ng-switch-when="Otros" style="border-radius: 0;width: 60px" src="/resources/img/golkii.png" />
+                  </td>
+                </tr>
+                <tr ng-if="info.ingresos.statusCredex">
+                  <td class="text-center">
+                    <img style="border-radius: 0;height: 26px; width: 120px" src="/resources/img/credex.png">
+                  </td>
+                  <td>{{info.ingresos.statusCredex}}</td>
                 </tr>
               </tbody>
             </table>

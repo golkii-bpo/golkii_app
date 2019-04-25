@@ -21,7 +21,8 @@ angular
         },
         ingresos:{
             salario:0,
-            salarioInss:0
+            salarioInss:0,
+            statusCredex:""
         },
         phones:[],
         cards:[]
@@ -81,6 +82,7 @@ angular
                 // Informacion Financiera
                 scope.info.ingresos.salario = response.data.value.datosGenerales.salario
                 scope.info.ingresos.salarioInss = response.data.value.datosGenerales.salarioINSS
+                scope.info.ingresos.statusCredex = response.data.value.datosGenerales.statusCredex
                 // Numeros de Telefono
                 scope.info.phones = [];
                 for( i in response.data.value.telefonos){
