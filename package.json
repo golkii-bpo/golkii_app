@@ -20,6 +20,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.3",
     "nodemon": "^1.18.10"
   }
 }
