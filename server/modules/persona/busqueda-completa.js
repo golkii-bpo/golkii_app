@@ -31,10 +31,9 @@ angular
     //métodos para ser ejecutados
     scope.buscar=()=>{
         Swal.fire({
-            imageUrl: 'https://placeholder.pics/svg/300x1500',
-            imageHeight: 1500,
-            imageAlt: 'A tall image',
-            showCloseButton: false
+            html:'<i class="fas fa-spinner fa-10x fa-spin fa-pulse"></i>',
+            showCloseButton: false,
+            showConfirmButton:false
         })
         const Busqueda = scope.Busqueda.toString();
         const Tipo = scope.TipoBusqueda.toString();
