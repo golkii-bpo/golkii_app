@@ -28,13 +28,32 @@ angular
         cards:[]
     }
 
+
+        const swLoading = Swal.mixin({
+            html: '<div class="text-center"><i class="fas fa-spinner fa-5x fa-spin text-white"></i></div>',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            background: 'transparent'
+        });
+
+        scope.LoadingState = false;
+        scope.Loading = function (state) {
+            if (scope.LoadingState != state) {
+                scope.LoadingState = state;
+                if (state) {
+                    swLoading.fire({});
+                } else {
+                    swLoading.close();
+                }
+            }
+        }
+
     //métodos para ser ejecutados
     scope.buscar=()=>{
-        Swal.fire({
-            html:'<i class="fas fa-spinner fa-10x fa-spin fa-pulse"></i>',
-            showCloseButton: false,
-            showConfirmButton:false
-        })
+        scope.Loading(true);
+
+
         const Busqueda = scope.Busqueda.toString();
         const Tipo = scope.TipoBusqueda.toString();
         const Campaign = 'EFNI';
@@ -71,7 +90,8 @@ angular
     
 
     const isFound = (error, response) =>{
-        Swal.close();
+
+        scope.Loading(false)
         try{
             if (response) {
                 console.log(response.data)
