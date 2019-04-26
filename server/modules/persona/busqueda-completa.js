@@ -110,6 +110,7 @@ angular
                 scope.info.ingresos.salario = response.data.value.datosGenerales.salario
                 scope.info.ingresos.salarioInss = response.data.value.datosGenerales.salarioINSS
                 scope.info.ingresos.statusCredex = response.data.value.datosGenerales.statusCredex
+                scope.info.ingresos.isWorking = response.data.value.datosGenerales.isWorking
                 // Numeros de Telefono
                 scope.info.phones = [];
                 for( i in response.data.value.telefonos){
