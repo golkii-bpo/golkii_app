@@ -30,6 +30,12 @@ angular
 
     //métodos para ser ejecutados
     scope.buscar=()=>{
+        Swal.fire({
+            imageUrl: 'https://placeholder.pics/svg/300x1500',
+            imageHeight: 1500,
+            imageAlt: 'A tall image',
+            showCloseButton: false
+        })
         const Busqueda = scope.Busqueda.toString();
         const Tipo = scope.TipoBusqueda.toString();
         const Campaign = 'EFNI';
@@ -66,6 +72,7 @@ angular
     
 
     const isFound = (error, response) =>{
+        Swal.close();
         try{
             if (response) {
                 console.log(response.data)
