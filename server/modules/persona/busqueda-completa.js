@@ -22,7 +22,8 @@ angular
         ingresos:{
             salario:0,
             salarioInss:0,
-            statusCredex:""
+            statusCredex: "",
+            isWorking: false
         },
         phones:[],
         cards:[]

@@ -119,7 +119,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Ingresos Extras</label>
+                <label class="col-sm-auto my-auto">Ingreso INSS</label>
                 <div class="col-sm-7">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
@@ -133,14 +133,17 @@
             </div>
             <div class="col-md-4">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Ingresos Extras</label>
+                <label class="col-sm-auto my-auto">Trabajador Activo</label>
                 <div class="col-sm-7">
                   <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
+                    <!-- <div class="input-group-prepend">
                       <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
                         id="inputGroup-sizing-sm">C$</span>
+                    </div> -->
+                    <div class="form-control form-control-sm">
+                      <p ng-if="info.ingresos.isWorking">Si</p>
+                      <p ng-if="!info.ingresos.isWorking">No</p>
                     </div>
-                    <div class="form-control form-control-sm">{{info.ingresos.salario}}</div>
                   </div>
                 </div>
               </div>
