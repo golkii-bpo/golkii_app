@@ -1,0 +1,29 @@
+
+<div class="card-body" ng-controller="Login" >
+    <form method="POST" class="my-login-validation" novalidate="">
+        <div class="form-group">
+            <label for="email">Correo Electronico</label>
+            <input id="email" type="email" class="formcontrol" name="email" value="" ng-model="User" required autofocus>
+            <div class="invalid-feedback">
+                Correo Electronico Invalido
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña
+                <a href="forgot.html" class="float-right">
+                    Olvido su Contraseña?
+                </a>
+            </label>
+            <input id="password" type="password" class="formcontrol" name="password" ng-model="Pwd" required data-eye>
+            <div class="invalid-feedback">
+                La Contraseña es requerida
+            </div>
+        </div>
+        <div class="form-group m-0">
+            <button type="button" class="btn btn-primary btn-block" ng-click="tryLogin()">
+                Login
+            </button>
+        </div>
+    </form>
+</div>

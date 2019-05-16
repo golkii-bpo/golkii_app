@@ -2,24 +2,32 @@
 <html lang="es">
 
 <head>
-    <%- include('../partials/header') %>
+    <%- include('../partials/header-login') %>
     <%- include('../partials/application')%>
 </head>
 
-<body ng-app="appGolkii">
-    <div class="container-scroller">
-        <%- include('../partials/navbar')%>
-        <div class="container-fluid page-body-wrapper">
-            <%-include('../partials/sidebar')%>
-            <div class="main-panel">
-                <%-body%>
-                <%- include('../partials/footer') %>
-            </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <%- include('../partials/scripts')%>
+</head>
+
+<body class="my-login-page">
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card-wrapper">
+                    <div class="brand">
+                        <img src="img/golkii.png" alt="logo">
+                    </div>
+                    <div class="card fat">
+                        <%-body%>
+                    </div>
+					<div class="footer">
+						Copyright &copy; 2019 &mdash; GOLKII BPO
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<%- include('../partials/scripts-login')%>
 </body>
 
 </html>
+

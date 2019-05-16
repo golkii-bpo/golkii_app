@@ -12,6 +12,10 @@ angular
             http.Get(`/persona/telefono/${telefono}/campaign/${campaign}`, callback)
         }
 
+        api.tryLogin=(User,Pwd,Callback)=>{
+            http.Post(``,{},);
+        }
+
         api.test=(callback) => { 
             console.log("probando")
             http.test(callback)}
