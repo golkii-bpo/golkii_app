@@ -1,6 +1,6 @@
 angular
 .module('appGolkii')
-    .controller('Login',['$scope','apiFactory', function(scope,factory){
+    .controller('Login',['$scope','coreFactory', function(scope,factory){
     // Variables de login
     scope.User ="";
     scope.Pwd = "";
