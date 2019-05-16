@@ -1,9 +1,12 @@
 angular
 .module('appGolkii')
-    .controller('Login',['$scope','coreFactory', function(scope,factory){
+.controller('loginCtrl', ['$scope','mongoFactory',function(scope,factory){
+
     // Variables de login
-    scope.User ="";
+    scope.User = "";
+    scope.validUsr = true;
     scope.Pwd = "";
+    scope.validPwd = true;
 
     const swLoading = Swal.mixin({
         html: '<div class="text-center"><i class="fas fa-spinner fa-5x fa-spin text-white"></i></div>',
@@ -32,22 +35,10 @@ angular
         const U = scope.User.toString();
         const P = scope.Pwd.toString();
 
-        if(!U) {
-            Swal.fire({
-                type: 'error',
-                title: 'Oops...',
-                text: 'Debe ingresar el nombre de usuario'
-            });
-            return;
-        }
-        if(!P){
-            Swal.fire({
-                type: 'error',
-                title: 'Oops...',
-                text: 'Debe ingresar su contraseña'
-            });
-            return;
-        }
+        console.log(`User: ${U}`);
+        console.log(`Password: ${P}`);
+        validUsr = !U;
+        validPwd = !P;
 
         factory.tryLogin(U,P,loginCallback);
     }

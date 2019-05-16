@@ -7,6 +7,6 @@ loginRouter
 .route('/')
 .get(errorHandler(
     async (req,res) =>{
-        res.status(200).render('page/login/login', { title: 'App Golkii', layout:'layouts/login-layout'});// res.render('page/dashboard/index', { layout:'../../views/layouts/login-layout'})
+        res.status(200).render('page/login/login', { title: 'App Golkii', layout:'layouts/login-layout'});
     })
 );

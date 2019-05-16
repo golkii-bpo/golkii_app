@@ -13,15 +13,6 @@ angular
             http.Get(factory,`/persona/telefono/${telefono}/campaign/${campaign}`, callback)
         }
 //#endregion Busqueda completa
-//#region Login
-        api.tryLogin=(User,Pwd,Callback)=>{
-            http.Post(factory,``,{},);
-        }
-//#endregion Login
-//#region Testing
-        api.test = (factory,callback) => { 
-            console.log("probando")
-            http.test(callback)}
-//#endregion Testing
+
         return api;
     }])

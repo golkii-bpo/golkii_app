@@ -65,27 +65,6 @@ angular
                 callback(error,null)
             }
         }
-
-        handler.test = (Factory,callback)=>{
-            try {
-                APIUrl = getApiUrl(Factory);
-                http({
-                    "method": "GET",
-                    "url": "http://192.168.1.227:8084/api/area/",
-                    "headers": {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    }
-                }).then((response) => {
-                    callback(null, response)
-                }).catch((error) => {
-                    callback(error, null);
-                })
-            }
-            catch (error) {
-                callback(error, null)
-            }
-        }
         return handler;
     }])
         
