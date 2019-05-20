@@ -5,6 +5,7 @@ angular
     scope.showPageslide = true;
     scope.colaboradores = [];
     scope.selectColaborador = null;
+    scope.Departamentos = Departamentos;
     scope.togglesidebar = () => {
         scope.showPageslide = !scope.showPageslide;
     }
@@ -26,7 +27,6 @@ angular
 
     scope.select = (colaborador) => {
         console.log(colaborador);
-        
         scope.selectColaborador = colaborador;  
         scope.showPageslide = !scope.showPageslide;
     }
