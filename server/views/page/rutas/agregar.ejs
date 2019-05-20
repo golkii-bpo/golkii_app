@@ -1,106 +1,22 @@
-<div class="content-wrapper" ng-controller="agregarRutaCtrl" ng-cloak>
+<div class="content-wrapper" ng-controller="agregarRutaCtrl" ng-init="getColaboradores()" ng-cloak>
 
     <!-- aside selector -->
-    <pageslide ps-open="checked" ps-body-class ="false" ps-push="false" ps-click-outside="false" style="overflow: scroll;">
-        <div class="title-wrapper bg-primary d-flex justify-content-center flex-column">
-            <h1 class="text-center text-white">Persona</h1>
+    <pageslide ps-open="showPageslide" ps-body-class ="false" ps-push="false" ps-click-outside="false"  ps-size="400px" style="overflow: scroll;">
+        <div class="filter-wrapper bg-primary d-flex justify-content-center flex-column">
+            <input type="text" class="form-control" ng-model="q" aria-label="filter colaboradores" placeholder="Busqueda de persona." >
         </div>
         <div class="table-responsive">
             <table class="table">
                 <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="1">
-                                    Jacob
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="2">
-                                    Samuel
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="3">
-                                    John
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="4">
-                                        Danilo
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="5">
-                                    Jacob
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="6">
-                                    Samuel
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="7">
-                                    John
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="8">
-                                    Danilo
-                                </label>
-                            </div>
+                    <tr ng-repeat="colaborador in colaboradores | filter:q as results track by colaborador.General.Nombre | limitTo: 100" ng-cloak>
+                        <td class="table-cell">
+                            <button type="button" class="btn btn-primary" ng-click="select(colaborador)"></button>
+                            {{colaborador.General.Nombre.concat(" ",colaborador.General.Apellido)}}
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <button type="button" class="btn btn-primary" style="position: fixed; right: 10px; bottom: 25px;">Seleccionar</button>
-        
     </pageslide>
     <!-- ene aside selector -->
 
@@ -129,7 +45,7 @@
                                 <div class="col-12 col-sm-9 input-group">
                                     <div type="text" class="form-control" placeholder="Nombre" aria-label="Recipient's username"
                                         aria-describedby="basic-addon2">
-                                        {{info.general.nombre}}</div>
+                                        {{selectColaborador.General.Nombre.concat(' ',selectColaborador.General.Apellido)}}</div>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-dark border " type="button" ng-click="togglesidebar()">...</button>
                                     </div>
