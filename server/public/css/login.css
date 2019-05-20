@@ -84,6 +84,11 @@ body.my-login-page {
 	border: 1px solid #ced4da !important;
 }
 
+.Password-Req {
+	font-size: 80%;
+	color: #dc3545;
+}
+
 @media screen and (max-width: 425px) {
 	.my-login-page .card-wrapper {
 		width: 90%;
