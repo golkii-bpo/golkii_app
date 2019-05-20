@@ -1,6 +1,6 @@
 angular
 .module('appGolkii')
-    .controller('Busqueda', ['$scope','apiFactory',function(scope,factory){
+    .controller('Busqueda', ['$scope','coreFactory',function(scope,factory){
     
     //variables de Busqueda
     scope.TipoBusqueda = "Cedula";

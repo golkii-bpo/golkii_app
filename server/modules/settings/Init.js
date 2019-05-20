@@ -1,1 +1,1 @@
-angular.module('appGolkii',[]);
+angular.module('appGolkii', ["pageslide-directive"]);
