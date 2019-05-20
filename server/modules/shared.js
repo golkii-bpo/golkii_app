@@ -8,60 +8,65 @@ function titleCase(str) {
     return str.join(' ');
 }
 
-const Departamentos = 
-    [
-        {
-            Nombre: "Caribe Norte",
-            Municipios: [{
-                    Nombre: "Puerto Cabezas"
-                },{
-                    Nombre: "Bonanza"
-                },{
-                    Nombre: "Mulukukú"
-                }, {
-                    Nombre: "Prinzapolka"
-                }, {
-                    Nombre: "Rosita"
-                }, {
-                    Nombre: "Siuna"
-                }, {
-                    Nombre: "Waslala"
-                }, {
-                    Nombre: "Waspán"
-                }
-            ]
-        },
-        {
-            Nombre: "Caribe Sur",
-            Municipios: [{
+const Departamentos = {
+    "Caribe Norte" : {
+        Municipios: [
+            {
+                Nombre: "Puerto Cabezas"
+            }, 
+            {
+                Nombre: "Bonanza"
+            }, 
+            {
+                Nombre: "Mulukukú"
+            }, 
+            {
+                Nombre: "Prinzapolka"
+            }, 
+            {
+                Nombre: "Rosita"
+            }, 
+            {
+                Nombre: "Siuna"
+            }, 
+            {
+                Nombre: "Waslala"
+            }, 
+            {
+                Nombre: "Waspán"
+            }
+        ]
+    },
+    "Caribe Sur": {
+        Municipios: [
+            {
                 Nombre: "Bluefields"
-                }, {
-                    Nombre: "Corn Island"
-                }, {
-                    Nombre: "Desembocadura de Río Grande"
-                }, {
-                    Nombre: "El Ayote"
-                }, {
-                    Nombre: "El Tortuguero"
-                }, {
-                    Nombre: "Kukra Hill"
-                }, {
-                    Nombre: "La Cruz de Río Grande"
-                }, {
-                    Nombre: "Laguna de Perlas"
-                }, {
-                    Nombre: "Muelle de los Bueyes"
-                }, {
-                    Nombre: "Nueva Guinea"
-                }, {
-                    Nombre: "Paiwas"
-                }, {
-                    Nombre: " 	El Rama"
-                }
-            ]
-        },
-        {
-            Nombre: "Boaco",
+            }, {
+                Nombre: "Corn Island"
+            }, {
+                Nombre: "Desembocadura de Río Grande"
+            }, {
+                Nombre: "El Ayote"
+            }, {
+                Nombre: "El Tortuguero"
+            }, {
+                Nombre: "Kukra Hill"
+            }, {
+                Nombre: "La Cruz de Río Grande"
+            }, {
+                Nombre: "Laguna de Perlas"
+            }, {
+                Nombre: "Muelle de los Bueyes"
+            }, {
+                Nombre: "Nueva Guinea"
+            }, {
+                Nombre: "Paiwas"
+            }, {
+                Nombre: " 	El Rama"
+            }
+        ]
+    },
+ "Boaco":{
             Municipios: [{
                 Nombre: "Boaco"
             }, {
@@ -77,8 +82,7 @@ const Departamentos =
             }
             ]
         },
-        {
-            Nombre: "Carazo",
+    "Carazo": {
             Municipios: [{
                 Nombre: "Diriamba"
             }, {
@@ -98,8 +102,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Chinandega",
+    "Chinandega": {
             Municipios: [{
                 Nombre: "Chichigalpa"
             }, {
@@ -129,8 +132,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Chontales",
+    "Chontales": {
             Municipios: [{
                 Nombre: "Acoyapa"
             }, {
@@ -154,8 +156,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Estelí",
+    "Estelí": {
             Municipios: [{
                     Nombre: "Condega"
             }, {
@@ -171,8 +172,7 @@ const Departamentos =
             }
             ]
         },
-        {
-            Nombre: "Granada",
+    "Granada":   {
             Municipios: [{
                 Nombre: "Diriá"
             }, {
@@ -184,8 +184,7 @@ const Departamentos =
             }
             ]
         },
-        {
-            Nombre: "Jinotega",
+    "Jinotega": {
             Municipios: [{
                 Nombre: "El Cuá"
             }, {
@@ -205,8 +204,7 @@ const Departamentos =
             }
             ]
         },
-        {
-            Nombre: "León",
+    "León":  {
             Municipios: [{
                 Nombre: "Achuapa"
             }, {
@@ -230,8 +228,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Madriz",
+    "Madriz" :{
             Municipios: [{
                 Nombre: "Las Sabanas"
             }, {
@@ -253,8 +250,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Managua",
+    "Managua": {
             Municipios: [{
                 Nombre: "Ciudad Sandino"
             }, {
@@ -276,8 +272,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Masaya",
+    "Masaya":{
             Municipios: [{
                 Nombre: "Catarina"
             }, {
@@ -299,8 +294,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Matagalpa",
+    "Matagalpa":{
             Municipios: [{
                 Nombre: "Ciudad Darío"
                 }, {
@@ -330,8 +324,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Nueva Segovia",
+    "Nueva Segovia":{
             Municipios: [{
                 Nombre: "Ciudad Antigua"
                 }, {
@@ -359,8 +352,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Río San Juan",
+    "Río San Juan": {
             Municipios: [{
                 Nombre: "El Almendro"
                 }, {
@@ -376,8 +368,7 @@ const Departamentos =
                 }
             ]
         },
-        {
-            Nombre: "Rivas",
+    "Rivas":{
             Municipios: [{
                 Nombre: "Altagracia"
             }, {
@@ -401,4 +392,4 @@ const Departamentos =
                 }
             ]
         }
-    ]
+}

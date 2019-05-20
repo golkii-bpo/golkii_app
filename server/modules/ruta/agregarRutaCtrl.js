@@ -5,6 +5,8 @@ angular
     scope.showPageslide = true;
     scope.colaboradores = [];
     scope.selectColaborador = null;
+    scope.selectDepartamento = "";
+    scope.selectMunicipio = "";
     scope.Departamentos = Departamentos;
     scope.togglesidebar = () => {
         scope.showPageslide = !scope.showPageslide;
