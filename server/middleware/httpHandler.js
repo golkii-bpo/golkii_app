@@ -5,7 +5,6 @@ angular
         handler = {};
 
         getApiUrl = (Factory)=>{
-            console.log(Factory);
             return Factory === 'core' ? coreApiUrl : mongoApiUrl;
         }
 

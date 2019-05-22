@@ -10297,7 +10297,10 @@ pre code {
 .table-responsive > .table-bordered {
   border: 0;
 }
-
+.input-group .form-control{
+  border: #ced4da 1px solid !important;
+  height: 100% !important;
+}
 .form-control, .dataTables_wrapper select {
   display: block;
   width: 100%;

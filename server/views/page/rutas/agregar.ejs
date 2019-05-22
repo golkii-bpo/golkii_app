@@ -1,4 +1,4 @@
-<div class="content-wrapper" ng-controller="agregarRutaCtrl" ng-init="getColaboradores()" ng-cloak>
+<div class="content-wrapper" ng-controller="agregarRutaCtrl" ng-init="Init()" ng-cloak>
 
     <!-- aside selector -->
     <pageslide ps-open="showPageslide" ps-body-class ="false" ps-push="false" ps-click-outside="false"  ps-size="400px" style="overflow: scroll;">
@@ -39,24 +39,30 @@
                 <div class="card-body">
                     <h4 class="card-title text-primary">Información General</h4>
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-6 mx-1">
                             <div class="form-group row">
-                                <label class="col-12 col-sm-3 my-auto">Persona</label>
-                                <div class="col-12 col-sm-9 input-group">
-                                    <div type="text" class="form-control" placeholder="Nombre" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2">
+                                <div class="input-group mb-3">
+                                    
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="basic-addon1">Persona</span>
+                                    </div>
+                                    <div class="form-control" aria-label="Persona" aria-describedby="basic-addon1">
                                         {{selectColaborador.General.Nombre.concat(' ',selectColaborador.General.Apellido)}}</div>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-dark border " type="button" ng-click="togglesidebar()">...</button>
+                                    <div class="input-group-append" aria-describedby="basic-addon1">
+                                        <button class="btn btn-outline-dark form-control" type="button" ng-click="togglesidebar()">...</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-5 mx-1">
                             <div class="form-group row">
-                                <label class="col-sm-3 my-auto">Cedula</label>
-                                <div class="col-sm-9">
-                                    <div class="form-control form-control-sm">{{selectColaborador.General.Cedula}}</div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="basic-addon2">Cedula</span>
+                                    </div>
+                                    <div class="form-control" aria-label="Cedula" aria-describedby="basic-addon2">
+                                        {{selectColaborador.General.Cedula}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -67,9 +73,9 @@
                         <div class="col-md-6">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text-select" for="Depa">Departamento</label>
+                                    <label class="input-group-text-select" for="Depa" >Departamento</label>
                                 </div>
-                                <select class="custom-select" id="Depa" ng-model="selectDepartamento" ng-options="k as k  for (k,v) in Departamentos">
+                                <select class="custom-select" id="Depa" ng-model="selectDepartamento" ng-options="k as k  for (k,v) in Departamentos" ng-change="departamentoChange()">
                                 </select>
                             </div>
                         </div><div class="col-md-6">
@@ -77,8 +83,8 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text-select" for="Muni">Municipio</label>
                                 </div>
-                               <select class="custom-select" id="Depa" ng-model="selectMunicipio"
-                                    ng-options="Municipio.Nombre for Municipio in Departamentos[selectDepartamento].Municipios">
+                               <select class="custom-select" id="Muni" ng-model="selectMunicipio"
+                                    ng-options="Municipio.Nombre for Municipio in Municipios" ng-change="x()">
                                 </select> 
                             </div>
                         </div>
@@ -131,14 +137,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-auto my-auto">Ingreso INSS</label>
                                 <div class="col-sm-7">
-                                    <div class="input-group input-group-sm">
-                                        <div class="input-group-prepend">
-                                            <span
-                                                class="bg-primary border-primary input-group-text text-white py-1 px-2"
-                                                id="inputGroup-sizing-sm">C$</span>
-                                        </div>
-                                        <div class="form-control form-control-sm">{{info.ingresos.salarioInss}}</div>
-                                    </div>
+                                    <datepicker 
+                                    date-format="dd/MM/yyyy"
+                                    date-set={{now}}
+                                    date-set-hidden="true" 
+                                    date-min-limit={{minDate}}
+                                    date-max-limit={{maxDate}}>
+                                    <input ng-model="date3" type="text" class="angular-datepicker-input disable" />
+                                </datepicker>
                                 </div>
                             </div>
                         </div>
@@ -146,16 +152,11 @@
                             <div class="form-group row">
                                 <label class="col-sm-auto my-auto">Trabajador Activo</label>
                                 <div class="col-sm-7">
-                                    <div class="input-group input-group-sm">
-                                        <!-- <div class="input-group-prepend">
-                      <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
-                        id="inputGroup-sizing-sm">C$</span>
-                    </div> -->
-                                        <div class="form-control form-control-sm">
-                                            <p ng-if="info.ingresos.isWorking">Si</p>
-                                            <p ng-if="!info.ingresos.isWorking">No</p>
-                                        </div>
-                                    </div>
+                                    <div class="datepicker" date-set-hidden="true" datepicker-append-to="body" date-format="MMMM d, y" date-set="2015/11/26"
+                                        date-min-limit="2014/08/07" date-max-limit="2016/09/07" date-typer="true"
+                                        date-disabled-dates="['2014/08/07', '2014/08/08' ]" button-prev='<i class="fa fa-arrow-circle-left"></i>'
+                                        button-next='<i class="fa fa-arrow-circle-right"></i>'>
+                                        <input ng-model="date2" type="text" class="angular-datepicker-input" />
                                 </div>
                             </div>
                         </div>

@@ -1,1 +1,1 @@
-angular.module('appGolkii', ["pageslide-directive"]);
+angular.module('appGolkii', ["pageslide-directive", "720kb.datepicker"]);
