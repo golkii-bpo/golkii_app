@@ -13,8 +13,8 @@ angular
         }
 // #endregion Login
 // #region Colaboradores
-        api.getColaboradores = (callback) =>{
-            http.Get(factory, `/colaborador/general/`, callback)
+        api.getColaboradores = () =>{
+            return http.Get(factory, `/colaborador/general/`)
         }
 // #endregion COlaboradores
         return api;

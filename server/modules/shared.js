@@ -401,3 +401,11 @@ const Departamentos = {
 ]
 }
 }
+
+const swLoading = Swal.mixin({
+    html: '<div class="text-center"><i class="fas fa-spinner fa-5x fa-spin text-white"></i></div>',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false,
+    background: 'transparent'
+});

@@ -11,48 +11,88 @@ angular
     scope.maxDate = Now.toISOString();
     scope.dateFormat = dateFormat;
 
-    scope.colaboradores = [];
-    scope.selectColaborador = null;
-    scope.selectDepartamento = "Managua";
-    scope.selectMunicipio = "";
-    scope.Departamentos = Departamentos;
-    scope.Municipios = {};
+    // Modelos
+    scope.listColaboradores = [];
+    scope.listDepartamentos = {};
 
+    scope.res = {
+        colaborador: "",
+        departamento: "",
+        municipios: "",
+        kilometraje: 0,
+        gasolina: 0.0,
+        pasaje: 0.0,
+        fechaSalida: Now,
+        descripcion: "",
+        casos: []
+    }
+
+    scope.LoadingState = false;
+    scope.Loading = function (state) {
+        if (scope.LoadingState != state) {
+            scope.LoadingState = state;
+            if (state) {
+                swLoading.fire({});
+            } else {
+                swLoading.close();
+            }
+        }
+    }
+
+    scope.LoadingState = false;
+    scope.Loading = function (state) {
+        if (scope.LoadingState != state) {
+            scope.LoadingState = state;
+            if (state) {
+                swLoading.fire({});
+            } else {
+                swLoading.close();
+            }
+        }
+    }
 
     scope.Init = async () => {
+        scope.Loading(true);
         await Promise
-            .all([colaboradores, productos])
+        .all([
+            factory.getColaboradores()
+        ])
         .then((data)=>{
-            //tu codigo va aqui.
-            console.log(data)
+            console.log(data[0].data.value);
+            
+            fillColaboradores(data[0].data.value);
+            fillDepartamentos(Departamentos);
+
+            scope.$apply();
+
+            scope.res.departamento = "Managua";
+            scope.res.municipio = Departamentos[scope.res.departamento].Municipios[0];
+            scope.Loading(false);
         })
         .catch((error)=>{
-            //Tu codigo de error va aqui.
+            console.log(error);
+            
         })
+
     }
     
-    const colaboradores = new Promise((res,rej) => {
-        try {
-            res([1,2,3,4]);
-        } catch (error) {
-            rej(error);
-        }
-    })
-    const productos = new Promise((res, rej) => {
-        try {
-            res(['a','b','c']);
-        } catch (error) {
-            rej(error);
-        }
-    })
+    const fillColaboradores = (colaboradores) =>{
+        scope.colaboradores = colaboradores;
+    }
+    const fillDepartamentos = (departamentos) => {
+        scope.Departamentos = departamentos;
+    }
+    
+    scope.togglesidebar = () => {
+        scope.showPageslide = !scope.showPageslide;
+    }
 
-    getColaboradores = () => {
-        factory.getColaboradores(getColaboradoresCallback);
+    scope.select = (colaborador) => {
+        scope.res.colaborador = colaborador;  
+        scope.togglesidebar();
     }
 
     scope.departamentoChange = () => {
-        console.log(scope.selectDepartamento);
-        
         const d = scope.selectDepartamento;
         scope.Municipios = scope.Departamentos[d].Municipios;
         if (d)
@@ -60,24 +100,9 @@ angular
                 scope.selectMunicipio = scope.Departamentos[d].Municipios[0];
     }
 
-    scope.togglesidebar = () => {
-        scope.showPageslide = !scope.showPageslide;
-    }
 
     
 
-    getColaboradoresCallback = (error, res) =>{
-        if(res){
-            scope.colaboradores = res.data.value;
-        }
-        else { 
-            // colocar SWAL de error
-        }
-    }
 
-    scope.select = (colaborador) => {
-        scope.selectColaborador = colaborador;  
-        scope.showPageslide = !scope.showPageslide;
-    }
 
 }])

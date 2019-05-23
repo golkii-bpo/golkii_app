@@ -47,7 +47,7 @@
                                         <span class="input-group-text-select" id="basic-addon1">Persona</span>
                                     </div>
                                     <div class="form-control" aria-label="Persona" aria-describedby="basic-addon1">
-                                        {{selectColaborador.General.Nombre.concat(' ',selectColaborador.General.Apellido)}}</div>
+                                        {{res.colaborador.General.Nombre.concat(' ',res.colaborador.General.Apellido)}}</div>
                                     <div class="input-group-append" aria-describedby="basic-addon1">
                                         <button class="btn btn-outline-dark form-control" type="button" ng-click="togglesidebar()">...</button>
                                     </div>
@@ -61,7 +61,7 @@
                                         <span class="input-group-text-select" id="basic-addon2">Cedula</span>
                                     </div>
                                     <div class="form-control" aria-label="Cedula" aria-describedby="basic-addon2">
-                                        {{selectColaborador.General.Cedula}}
+                                        {{res.colaborador.General.Cedula}}
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text-select" for="Depa" >Departamento</label>
                                 </div>
-                                <select class="custom-select" id="Depa" ng-model="selectDepartamento" ng-options="k as k  for (k,v) in Departamentos" ng-change="departamentoChange()">
+                                <select class="custom-select" id="Depa" ng-model="res.departamento" ng-options="k as k  for (k,v) in listDepartamentos" ng-change="departamentoChange()">
                                 </select>
                             </div>
                         </div><div class="col-md-6">
@@ -83,8 +83,8 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text-select" for="Muni">Municipio</label>
                                 </div>
-                               <select class="custom-select" id="Muni" ng-model="selectMunicipio"
-                                    ng-options="Municipio.Nombre for Municipio in Municipios" ng-change="x()">
+                               <select class="custom-select" id="Muni" ng-model="res.municipio"
+                                    ng-options="Municipio.Nombre for Municipio in listDepartamentos[res.departamento].Municipios">
                                 </select> 
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                                 <label class="col-sm-3 my-auto">Km recorrido</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control form-control" style="overflow: auto;">
-                                        {{info.demografia.kilometraje}}</input>
+                                        {{res.kilometraje}}</input>
                                 </div>
                             </div>
                         </div>
