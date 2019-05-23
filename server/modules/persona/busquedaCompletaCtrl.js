@@ -28,8 +28,6 @@ angular
         phones:[],
         cards:[]
     }
-
-
     scope.LoadingState = false;
     scope.Loading = function (state) {
         if (scope.LoadingState != state) {
@@ -44,13 +42,13 @@ angular
 
     //métodos para ser ejecutados
     scope.buscar=()=>{
+        // Se inicia el espinner de CARGANDO
         scope.Loading(true);
-
-
-        const Busqueda = scope.Busqueda.toString();
+        // Parametros de busqueda
         const Tipo = scope.TipoBusqueda.toString();
+        const Busqueda = scope.Busqueda.toString();
         const Campaign = 'EFNI';
-
+        // Se valida que se haya ingresado el texto a buscar
         if (!Busqueda) {
             Swal.fire({
                 type: 'error',
@@ -59,91 +57,73 @@ angular
             })
             return;
         }
-
-        switch(Tipo){
-            case 'Cedula':{
-                factory.getPersonaByCedula(Busqueda,Campaign,isFound);
-                break;
-            }
-            case 'Telefono': {
-                factory.getPersonaByTelefono(Busqueda,Campaign, isFound);
-                break;
-            }
-            default:{
-                Swal.fire({
-                    type: 'error',
-                    title: 'Fatal Error',
-                    text: `Document Selector Unrecognized`
-                })
-                return;
-            }
+        // Segun el tipo de busqueda establecido se valida que llamado al API se realizará
+        if (Tipo === 'Cedula' || Tipo === 'Telefono'){
+            var P = Tipo === 'Cedula'?
+                factory.getPersonaByCedula(Busqueda,Campaign):
+                factory.getPersonaByTelefono(Busqueda,Campaign);
+            P.then((result) => {
+                fillPersona(result.data);
+            }).catch((err) => {
+                throwError(err);
+            });
+            scope.Loading(false);
         }
+        else{
+            Swal.fire({
+                type: 'error',
+                title: 'Fatal Error',
+                text: `Document Selector Unrecognized`
+            })
+            return;
+        }
+    }
+    
+    const fillPersona = (data) => {
+        // Binding de informacion
+        // Informacion General
+        scope.info.general.nombre = titleCase(data.value.datosGenerales.nombre);
+        scope.info.general.cedula = data.value.datosGenerales.cedula;
+        scope.info.general.edad = data.value.datosGenerales.edad;
+        scope.info.general.sexo = data.value.datosGenerales.sexo;
+        // Informacion Demografica
+        scope.info.demografia.departamento = data.value.datosGenerales.departamento
+        scope.info.demografia.municipio = data.value.datosGenerales.municipio
+        scope.info.demografia.domicilio = data.value.datosGenerales.domicilio
+        // Informacion Financiera
+        scope.info.ingresos.salario = data.value.datosGenerales.salario
+        scope.info.ingresos.salarioInss = data.value.datosGenerales.salarioINSS
+        scope.info.ingresos.statusCredex = data.value.datosGenerales.statusCredex
+        scope.info.ingresos.isWorking = data.value.datosGenerales.isWorking
+        // Numeros de Telefono
+        scope.info.phones = [];
+        
+        for (i in data.value.telefonos) {
+            let _obj = data.value.telefonos[i];
+            console.log(_obj);
+            
+            scope.info.phones.push({
+                Telefono: _obj.telefono,
+                Operadora: titleCase(_obj.operadora)
+            })
+        }
+        scope.info.cards = [];
+        for (j in data.value.tarjetas) {
+            let _obj = data.value.tarjetas[j];
+            scope.info.cards.push({ bank: _obj.banco })
+        }
+    }
+
+    const throwError = (error) => {
+        console.log(error);
+        
+        Swal.fire({
+            type: 'error',
+            title: 'Cliente no encontrado',
+            text: error.Message
+        })
     }
 
     
-
-    const isFound = (error, response) =>{
-
-        scope.Loading(false)
-        try{
-            if (response) {
-                console.log(response.data)
-                // Binding de informacion
-                // Informacion General
-                scope.info.general.nombre = titleCase(response.data.value.datosGenerales.nombre);
-                scope.info.general.cedula = response.data.value.datosGenerales.cedula;
-                scope.info.general.edad = response.data.value.datosGenerales.edad;
-                scope.info.general.sexo = response.data.value.datosGenerales.sexo;
-                // Informacion Demografica
-                scope.info.demografia.departamento = response.data.value.datosGenerales.departamento
-                scope.info.demografia.municipio = response.data.value.datosGenerales.municipio
-                scope.info.demografia.domicilio = response.data.value.datosGenerales.domicilio
-                // Informacion Financiera
-                scope.info.ingresos.salario = response.data.value.datosGenerales.salario
-                scope.info.ingresos.salarioInss = response.data.value.datosGenerales.salarioINSS
-                scope.info.ingresos.statusCredex = response.data.value.datosGenerales.statusCredex
-                scope.info.ingresos.isWorking = response.data.value.datosGenerales.isWorking
-                // Numeros de Telefono
-                scope.info.phones = [];
-                for( i in response.data.value.telefonos){
-                    let _obj = response.data.value.telefonos[i];
-                    scope.info.phones.push({
-                        Telefono: _obj.telefono,
-                        Operadora: _obj.operadora
-                    })
-                }
-                scope.info.cards = [];
-                for(j in response.data.value.tarjetas){
-                    let _obj = response.data.value.tarjetas[j];
-                    scope.info.cards.push({ bank: _obj.banco})
-                }
-
-
-                console.log(scope.info.phones);
-
-            } else if (error){
-                console.log(error)
-                Swal.fire({
-                    type: 'error',
-                    title: 'Cliente no encontrado',
-                    text: error.Message
-                })
-            }else{
-                Swal.fire({
-                    type: 'error',
-                    title: 'Oops...',
-                    text: 'Error inesperado en getPersonaByCedula!'
-                })
-            }
-        }
-        catch(error){
-            console.log(error);
-            Swal.fire({
-                type: 'error',
-                title: 'Oops...',
-                text: 'Error en formato recibido!'
-            })
-        }
-    }
 
 }]);
