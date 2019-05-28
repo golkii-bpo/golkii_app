@@ -402,6 +402,22 @@ const Departamentos = {
 }
 }
 
+const TiposInsumo = 
+{
+    "Viatico de Transporte": {
+        dbVal:"Transporte",
+        label: "Viatico C$"
+    },
+    "Viatico Alimenticio": {
+        dbVal: "Alimento",
+        label: "Viatico C$"
+    },
+    "Gasolina": {
+        dbVal: "Gasolina",
+        label: "Litros"
+    }
+}
+
 const swLoading = Swal.mixin({
     html: '<div class="text-center"><i class="fas fa-spinner fa-5x fa-spin text-white"></i></div>',
     allowOutsideClick: false,

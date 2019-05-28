@@ -9963,7 +9963,7 @@ pre code {
 
 .table th,
 .table td {
-  padding: 1.25rem 0.9375rem;
+  padding: 0.5rem 0.9375rem;
   vertical-align: top;
   border-top: 1px solid #f3f3f3;
 }
@@ -20867,8 +20867,8 @@ dl li {
 .table thead th {
   border-top: 0;
   border-bottom-width: 1px;
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 800;
+  font-size: 1.1rem;
 }
 
 .table thead th i {

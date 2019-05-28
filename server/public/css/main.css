@@ -44,12 +44,13 @@ body.ng-pageslide-body-closed::before {
 select::-ms-expand {
     display: none;
 }
-.form-group>.input-group{
-    overflow: hidden;
-    max-height: 36px;
-}
-.form-group>.input-group >*{
+.angular-datepicker > .angular-datepicker-input{
+    margin: -11px -22px;
+    padding: 11px 22px;
+    width: 100%;
     height: 100%;
+    position: absolute;
+    border: none;
 }
 .ng-pageslide > div:first-of-type{
     margin-top: 3.7em !important;
@@ -100,4 +101,17 @@ select::-ms-expand {
         border-bottom-right-radius: 0.25rem;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+}
+
+.form-group>.input-group .number{
+    padding: 0 10px !important;
+}
+.form-control{
+    padding: 11px 1.375rem !important;
+}
+.roundBtn{
+    padding: 4px 10px;
+    top: 3px;
+    position: absolute;
+    border-radius: 50%;
 }
