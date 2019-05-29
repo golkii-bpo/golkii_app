@@ -55,33 +55,33 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Nombre</label>
+                <label class="col-sm-3 my-auto">Nombre</label>
                 <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.general.nombre}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Cedula</label>
-                <div class="col-sm-6">
+                <label class="col-sm-3 my-auto">Cedula</label>
+                <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.general.cedula}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Edad</label>
-                <div class="col-sm-6">
-                  <div class="form-control form-control-sm">{{info.general.edad}}</div>
+                <label class="col-sm-3 my-auto">Sexo</label>
+                <div class="col-sm-9">
+                  <div class="form-control form-control-sm">{{info.general.sexo}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Sexo</label>
-                <div class="col-sm-6">
-                  <div class="form-control form-control-sm">{{info.general.sexo}}</div>
+                <label class="col-sm-3 my-auto">Edad</label>
+                <div class="col-sm-9">
+                  <div class="form-control form-control-sm">{{info.general.edad}}</div>
                 </div>
               </div>
             </div>
@@ -91,16 +91,16 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-4 my-auto">Departamento</label>
-                <div class="col-sm-8">
+                <label class="col-sm-3 my-auto">Departamento</label>
+                <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.demografia.departamento}}</div>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-4 my-auto">Municipio</label>
-                <div class="col-sm-8">
+                <label class="col-sm-3 my-auto">Municipio</label>
+                <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.demografia.municipio}}</div>
                 </div>
               </div>
@@ -154,7 +154,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-9 grid-margin stretch-card">
+    <div class="col-lg-8 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">
@@ -170,8 +170,8 @@
                 <tr ng-repeat="phone in info.phones" ng-if="phone.Operadora">
                   <td>{{phone.Operadora}}</td>
                   <td ng-switch="phone.Operadora">
-                    <label ng-switch-when="movistar" class="badge badge-primary">{{phone.Telefono}}</label>
-                    <label ng-switch-when="claro" class="badge badge-danger">{{phone.Telefono}}</label>
+                    <label ng-switch-when="Movistar" class="badge badge-primary">{{phone.Telefono}}</label>
+                    <label ng-switch-when="Claro" class="badge badge-danger">{{phone.Telefono}}</label>
                   </td>
                   <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
                 </tr>
@@ -186,7 +186,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 grid-margin stretch-card">
+    <div class="col-lg-4 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">

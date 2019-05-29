@@ -9963,7 +9963,7 @@ pre code {
 
 .table th,
 .table td {
-  padding: 1.25rem 0.9375rem;
+  padding: 0.5rem 0.9375rem;
   vertical-align: top;
   border-top: 1px solid #f3f3f3;
 }
@@ -10297,7 +10297,10 @@ pre code {
 .table-responsive > .table-bordered {
   border: 0;
 }
-
+.input-group .form-control{
+  border: #ced4da 1px solid !important;
+  height: 100% !important;
+}
 .form-control, .dataTables_wrapper select {
   display: block;
   width: 100%;
@@ -12155,6 +12158,8 @@ input[type="button"].btn-block {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .custom-select:focus {
@@ -20862,8 +20867,8 @@ dl li {
 .table thead th {
   border-top: 0;
   border-bottom-width: 1px;
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 800;
+  font-size: 1.1rem;
 }
 
 .table thead th i {
