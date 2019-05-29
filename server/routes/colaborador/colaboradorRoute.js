@@ -1,4 +1,4 @@
-const express = require('Express');
+const express = require('express');
 const errorHandler = require('../../middleware/errorHandler');
 const agregarColaboradorRoute = express.Router();
 
