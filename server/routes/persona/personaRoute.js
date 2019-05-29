@@ -6,5 +6,5 @@ module.exports = personaRoute;
 
 personaRoute
 .get('/BusquedaCompleta',errorHandler(async(req,res) =>{
-    return res.status(200).render('page/persona/busquedaCompleta',{title:'AppGolkii'});
+    return res.render('page/persona/busquedaCompleta',{title:'AppGolkii'});
 }));
