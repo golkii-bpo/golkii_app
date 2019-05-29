@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('');
 const errorHandler = require('../../middleware/errorHandler');
 const personaRoute = express.Router();
 
