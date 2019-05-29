@@ -404,17 +404,20 @@ const Departamentos = {
 
 const TiposInsumo = 
 {
-    "Viatico de Transporte": {
-        dbVal:"Transporte",
-        label: "Viatico C$"
+    "Transporte": {
+        description:"Viatico de Transporte",
+        label: "Viatico C$",
+        key: "Transporte"
     },
-    "Viatico Alimenticio": {
-        dbVal: "Alimento",
-        label: "Viatico C$"
+    "Alimento": {
+        description: "Viatico Alimenticio",
+        label: "Viatico C$",
+        key: "Alimento"
     },
     "Gasolina": {
-        dbVal: "Gasolina",
-        label: "Litros"
+        description: "Gasolina",
+        label: "Litros",
+        key: "Gasolina"
     }
 }
 
@@ -425,3 +428,11 @@ const swLoading = Swal.mixin({
     showConfirmButton: false,
     background: 'transparent'
 });
+
+const ramdomRange = (min, max, diffOf) => {
+    do  {
+        v = Math.floor(Math.random() * max) + min;
+    } while(v==diffOf)
+    return v;
+}
+

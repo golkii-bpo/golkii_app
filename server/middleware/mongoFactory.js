@@ -14,8 +14,13 @@ angular
 // #endregion Login
 // #region Colaboradores
         api.getColaboradores = () =>{
-            return http.Get(factory, `/colaborador/general/`)
+            return http.Get(factory, `/colaborador/general/`);
         }
-// #endregion COlaboradores
+// #endregion Colaboradores
+// #region Rutas
+        api.postRuta = (data) => {
+            return http.Post(factory, '/rutas',data);
+        }
+// #endregion Rutas
         return api;
     }])

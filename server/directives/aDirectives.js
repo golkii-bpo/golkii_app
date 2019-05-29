@@ -70,6 +70,12 @@ angular
                 if(""==ngModelCtrl.$viewValue){
                     ngModelCtrl.$setViewValue("0");
                     ngModelCtrl.$render();
+                    return;
+                }
+                if (!isNaN(ngModelCtrl.$viewValue)){
+                    ngModelCtrl.$setViewValue(Number(ngModelCtrl.$viewValue));
+                    ngModelCtrl.$render();
+                    return;
                 }
             });
             scope.$watch(attrs.ngModel, (newValue, oldValue) => {
