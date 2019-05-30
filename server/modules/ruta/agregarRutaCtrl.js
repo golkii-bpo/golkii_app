@@ -11,6 +11,7 @@ angular
     scope.dateFormat = dateFormat;
     // Variables auxiliares de la vista
     scope.enableDelCase = false; // indica validez para eliminar casos
+    scope.auxDate;
     // Param Insumos
     scope.insumoMinVal = 0;
     scope.insumoMaxVal = 5000;
@@ -26,6 +27,7 @@ angular
     scope.insumo = {
         db: "",        // Llave dek objeto
         l: "",         // Label
+        p: "",         // Label Position
         d: "",         // Description
         v: 0,          // input Value
         km: undefined, // input Km -> Only when k = "Gasolina"
@@ -35,9 +37,11 @@ angular
     scope.res = {
         Colaborador: "",
         Descripcion: "",
-        Casos: [],    
-        Departamento: "",
-        Municipio: "",
+        Casos: [],   
+        Demografia: { 
+            Departamento: "",
+            Municipio: ""
+        },
         Insumos: [],
         FechaSalida: Now.toLocaleDateString()
     };
@@ -63,6 +67,7 @@ angular
         scope.insumo.db = k;
         scope.insumo.l = scope.listTiposInsumo[k].label;
         scope.insumo.d = scope.listTiposInsumo[k].description;
+        scope.insumo.p = scope.listTiposInsumo[k].lpos;
         scope.insumo.v = 0;
         // optional param -> scope.insumo.km 
         // optional param -> scope.insumo.o
@@ -71,6 +76,7 @@ angular
     }
 
     scope.Init = async () => {
+        scope.togglesidebar();
         // Se activa el Spinner de "CARGANDO"
         scope.Loading(true);
         // Ejecucion de una lista de promesas
@@ -89,9 +95,12 @@ angular
             fillTiposInsumo(TiposInsumo);
             // Seleccion de valores por defecto seleccionados
             // Seleccion de departamento por defecto
-            scope.res.Departamento = "Managua";
+            scope.res.Demografia.Departamento = "Managua";
             // Seleccion de municipio por defecto basado en departamento seleccionado
-            scope.res.Municipio = scope.listDepartamentos[scope.res.Departamento].Municipios[0].Nombre;
+            scope.res.Demografia.Municipio = scope.listDepartamentos[scope.res.Demografia.Departamento].Municipios[0].Nombre;
+            // Selecciona la fecha de salida por defecto
+            scope.auxDate = scope.now;
+            scope.res.FechaSalida = new Date();
             // Reinicia el valor de insumo por defecto
             initInsumo();
             // Se aplican todos los cambios al DOM
@@ -129,14 +138,14 @@ angular
     // Este metodo se dispara cada ves que el Options de Departamentos cambia de valor,
     // realiza el llenado de la lista de municipios correspondiente al departamento seleccionado
     scope.departamentoChange = () => {
-        const d = scope.res.Departamento;
+        const d = scope.res.Demografia.Departamento;
         if (d){
             if (scope.listDepartamentos.hasOwnProperty(d)){
-                scope.res.Municipio = scope.listDepartamentos[d].Municipios[0].Nombre;
+                scope.res.Demografia.Municipio = scope.listDepartamentos[d].Municipios[0].Nombre;
                 return;
             }
         }
-        scope.res.Municipio = listDepartamentos[scope.res.Departamento].Municipios[0].Nombre;
+        scope.res.Demografia.Municipio = listDepartamentos[scope.res.Demografia.Departamento].Municipios[0].Nombre;
     }
     // Este metodo se dispara cada ves que el input del model insumo.key cambia de valor
     // realiza el cambio del label y dbVal del modelo de insumo
@@ -144,6 +153,7 @@ angular
         var i = scope.listTiposInsumo[insumo.key];
         scope.insumo.l = i.label;
         scope.insumo.db = i.key;
+        scope.insumo.p = i.lpos;
         if(scope.insumo.db == "Gasolina")
             scope.insumo.km = 0;
         else
@@ -228,8 +238,19 @@ angular
         });
     }
 
+    scope.validDate = () =>{
+        try {
+            scope.res.FechaSalida = toDate(scope.auxDate, '/').getTime();
+        }
+        catch (error) {
+            console.log("Ocurrio un error al convertir fecha",error);
+            scope.res.FechaSalida = new Date();
+        }        
+    }
+
     scope.submit = () => {
         scope.Loading(true);
+
         factory
         .postRuta(scope.res)
         .then(data => {

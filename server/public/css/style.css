@@ -20359,12 +20359,14 @@ code {
   border: none;
 }
 
-.input-group-append .input-group-text,
+
+/* ELIMINADO POR QUE DA MALOS ESTILOS */
+/* .input-group-append .input-group-text,
 .input-group-prepend .input-group-text {
   border-color: #f3f3f3;
   padding: 0.875rem 0.75rem;
   color: #c9c8c8;
-}
+} */
 
 .form-control, .dataTables_wrapper select {
   border: 1px solid #f3f3f3;
