@@ -9,6 +9,8 @@ angular
     scope.minDate = MinDate.toISOString();
     scope.maxDate = Now.toISOString();
     scope.dateFormat = dateFormat;
+    // Variables auxiliares de la vista
+    scope.enableDelCase = false; // indica validez para eliminar casos
     // Param Insumos
     scope.insumoMinVal = 0;
     scope.insumoMaxVal = 5000;
@@ -64,6 +66,8 @@ angular
         scope.insumo.v = 0;
         // optional param -> scope.insumo.km 
         // optional param -> scope.insumo.o
+        delete scope.insumo.km;
+        delete scope.insumo.o;
     }
 
     scope.Init = async () => {
@@ -210,7 +214,11 @@ angular
         scope.nCaso = "";    
     }
     scope.delCaso = (index)=>{
-        scope.res.Casos.splice(index,1);
+        if(scope.enableDelCase)
+            scope.res.Casos.splice(index,1);
+
+        if (scope.res.Casos.length == 0)
+            scope.enableDelCase = false;
     }
 
     // Metodo que elimina un valor de la tabla de Insumos
@@ -244,5 +252,12 @@ angular
             text: text
         })
         return;
+    }
+    // 
+    scope.toggleDelCase = () => {
+        if (scope.res.Casos.length == 0 && scope.enableDelCase == false)
+            errorSWAL("No ha ingresado ningun caso aun.");
+        else
+        scope.enableDelCase = !scope.enableDelCase;
     }
 }])

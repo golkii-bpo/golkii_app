@@ -115,3 +115,10 @@ select::-ms-expand {
     position: absolute;
     border-radius: 50%;
 }
+.fa-trash{
+    fill: #f2f2f2;
+}
+.input-group button.select{
+    color: #ffaaaa;
+    background-color: #282f3a;
+}
