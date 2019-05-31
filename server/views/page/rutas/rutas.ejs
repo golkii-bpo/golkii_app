@@ -1,0 +1,27 @@
+<div class="content-wrapper" ng-controller="rutasCtrl" ng-init="Init()" ng-cloak>
+    <div>
+        <div class="filter-wrapper bg-primary d-flex justify-content-center flex-column">
+            <input type="text" class="form-control" ng-model="q" aria-label="filter listColaboradores"
+                placeholder="Busqueda de persona.">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tipo de Insumo</th>
+                        <th>Valor</th>
+                        <th>Observación</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr ng-repeat="colaborador in listColaboradores | filter:q as results track by colaborador.General.Nombre | limitTo: 100"
+                        ng-cloak>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

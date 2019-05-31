@@ -1,6 +1,6 @@
 angular
 .module('appGolkii')
-.controller('agregarRutaCtrl',['$scope','mongoFactory',(scope, factory)=>{
+    .controller('agregarRutaCtrl', ['$scope', '$window', 'mongoFactory', 'agregarRutaSrv', 'generalValidationSrv', (scope, window, factory, service,gValidate)=>{
    
     // Pageslide
     scope.showPageslide = true;
@@ -12,11 +12,6 @@ angular
     // Variables auxiliares de la vista
     scope.enableDelCase = false; // indica validez para eliminar casos
     scope.auxDate;
-    // Param Insumos
-    scope.insumoMinVal = 0;
-    scope.insumoMaxVal = 5000;
-    scope.insumoMinKmVal = 0;
-    scope.insumoMaxKmVal = 2000;
     // Listas de seleccion
     scope.listColaboradores = [];
     scope.listDepartamentos = {};
@@ -76,7 +71,7 @@ angular
     }
 
     scope.Init = async () => {
-        scope.togglesidebar();
+        scope.showPageslide = false;
         // Se activa el Spinner de "CARGANDO"
         scope.Loading(true);
         // Ejecucion de una lista de promesas
@@ -145,7 +140,6 @@ angular
                 return;
             }
         }
-        scope.res.Demografia.Municipio = listDepartamentos[scope.res.Demografia.Departamento].Municipios[0].Nombre;
     }
     // Este metodo se dispara cada ves que el input del model insumo.key cambia de valor
     // realiza el cambio del label y dbVal del modelo de insumo
@@ -165,59 +159,27 @@ angular
     }
     // Metodo que realiza una copia el modelo insumo y lo agrega a la tabla de Insumos
     scope.addInsumo = () => {
-        // validaciones generales para cada tipo de insumo
-        if (typeof scope.insumo.v === 'undefined') {
-            errorSWAL("Debe ingresar un valor para el insumo")
+        let err = service.generalInsumoValidation(scope.insumo);
+        if(err){
+            errorSWAL(err);
             return;
         }
-        else if (isNaN(scope.insumo.v)) {
-            errorSWAL("El valor del insumo debe ser numerico");
-            return;
-        }
-        else if (scope.insumo.v < scope.insumoMinVal || scope.insumo.v > scope.insumoMaxVal){
-            errorSWAL(`El valor del insumo debe ser mayor que ${scope.insumoMinVal} y menor que ${scope.insumoMaxVal}`);
-            return;
-        }        
-        // validaciones especificas para el insumo de tipo Gasolina
-        if(scope.insumo.key =="Gasolina"){
-            if (typeof scope.insumo.km === 'undefined') {
-                errorSWAL("Debe ingresar un valor para el kilometraje")
-                return;
-            }
-            else if (isNaN(scope.insumo.km)) {
-                errorSWAL("El valor del kilometraje debe ser numerico");
-                return;
-            }
-            else if (scope.insumo.km <= scope.insumoMinKmVal || scope.insumo.km > scope.insumoMaxKmVal) {
-                errorSWAL(`El valor del kilometraje del insumo debe ser mayor que ${scope.insumoMinKmVal} y menor que ${scope.insumoMaxKmVal}`);
-                return;
-            }
-        }
-
         let aux = {
             Tipo: scope.insumo.db,
             Valor: scope.insumo.v
         }
-        console.log("scope insumo",scope.insumo);
-
         if(scope.insumo.db == 'Gasolina')
             aux.Kilometro = scope.insumo.km;
         if (scope.insumo.db != 'Alimento')
             aux.Observacion = scope.insumo.o;
-        
-
-            console.log("aux",aux);
-            
-
-
         scope.res.Insumos.push(aux);
         initInsumo();
     }
     // Metodo que realiza una copia del caso y lo agrega a la lista de casos
     scope.addCaso = (caso) => {
-        if(!caso || caso=='undefined' || caso == '')
-        {
-            errorSWAL("Debe de llenar el campo del caso para poder continuar");
+        let err = gValidate.notNullValue(caso,'caso');
+        if(err) {
+            errorSWAL(err);
             return;
         }
         scope.res.Casos.push(caso.toUpperCase());   
@@ -250,18 +212,46 @@ angular
 
     scope.submit = () => {
         scope.Loading(true);
+        let err = gValidate.notNullValue(scope.res.Colaborador, 'persona');
+        if (!gValidate.minLength(scope.res.Insumos, 1) && !err)
+            err = "Debe de ingresar al menos un Insumo antes de continuar";
+        else if (!gValidate.minLength(scope.res.Casos,1) && !err)
+            err = "Debe de ingresar al menos un Caso antes de continuar";
+        else if(!err){
+            err = gValidate.notNullValue(scope.res.Descripcion, 'Descripción');
+            if (!gValidate.minLength(scope.res.Descripcion,10) && !err)
+                err = "La Descripción de la ruta es demasiado corta."
+        }
+        if (err) {
+            errorSWAL(err);
+            return;
+        }
 
         factory
         .postRuta(scope.res)
         .then(data => {
-            console.log("DATA",data);
-            
+            // console.log("DATA",data);
             scope.Loading(false);
+            Swal.fire({
+                type: 'success',
+                title: 'Datos Ingresados exitosamente',
+                text: "Los datos han sido registrados exitosamente",
+                backdrop: `
+                            rgba(0,0,123,0.4)
+                            url("/resources/img/nyan-cat.gif")
+                            center left
+                            no-repeat
+                        `
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '/app/ruta/';
+                }
+            })
         })
         .catch(error => {
             console.log('ERROR',error);
-
             scope.Loading(false);
+            errorSWAL("Ha ocurrido un error durante la insercion de los datos, contactese con soporte del sistema!");
         });
     }
 
@@ -274,11 +264,11 @@ angular
         })
         return;
     }
-    // 
+    // Metodo para activar o desactivar la eliminacion de casos
     scope.toggleDelCase = () => {
         if (scope.res.Casos.length == 0 && scope.enableDelCase == false)
             errorSWAL("No ha ingresado ningun caso aun.");
         else
-        scope.enableDelCase = !scope.enableDelCase;
+            scope.enableDelCase = !scope.enableDelCase;
     }
-}])
+}]);
