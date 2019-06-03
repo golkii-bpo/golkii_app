@@ -255,15 +255,7 @@ angular
         });
     }
 
-    // Metodo para la carga del SWAL de error
-    errorSWAL = (text) => {
-        Swal.fire({
-            type: 'error',
-            title: 'Oops...',
-            text: text
-        })
-        return;
-    }
+    
     // Metodo para activar o desactivar la eliminacion de casos
     scope.toggleDelCase = () => {
         if (scope.res.Casos.length == 0 && scope.enableDelCase == false)

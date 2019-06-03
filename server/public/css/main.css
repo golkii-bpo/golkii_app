@@ -140,3 +140,23 @@ select::-ms-expand {
     color: #ffaaaa;
     background-color: #282f3a;
 }
+.actionBtn{
+    padding: 5px;
+}
+.actionBtn:hover .fa-info-circle path{
+    fill: blue;
+}
+.actionBtn:hover .fa-pencil-alt path{
+    fill: green;
+}
+.actionBtn:hover .fa-trash path{
+    fill: red;
+}
+.table-header{
+    background-color: #3498db;
+    color: #fff;
+}
+.badge-green{
+    color: #fff;
+    background-color: #117a65 !important;
+}

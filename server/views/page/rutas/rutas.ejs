@@ -1,27 +1,69 @@
-<div class="content-wrapper" ng-controller="rutasCtrl" ng-init="Init()" ng-cloak>
-    <div>
-        <div class="filter-wrapper bg-primary d-flex justify-content-center flex-column">
-            <input type="text" class="form-control" ng-model="q" aria-label="filter listColaboradores"
-                placeholder="Busqueda de persona.">
+<div class="content-wrapper" ng-controller="rutasCtrl" ng-init="Fill()" ng-cloak>
+    <div class="card p-2 my-2">
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-6">
+                <datepicker date-format="dd/MM/yyyy" date-set={{now}} date-set-hidden="true" date-min-limit={{minDate}}
+                    date-max-limit={{maxDate}} class="form-control angular-datepicker" style="height: 40px !important; border: 1px solid #d2d2d2;">
+                    <input ng-model="fechaInicio" type="text" class="angular-datepicker-input" ng-change="validDate(fechaInicio)" placeholder="Fecha de Inicio" />
+                </datepicker>
+            </div>
+            <div class="col-6">
+                <datepicker date-format="dd/MM/yyyy" date-set={{now}} date-set-hidden="true" date-min-limit={{minDate}}
+                    date-max-limit={{maxDate}} class="form-control angular-datepicker" style="height: 40px !important; border: 1px solid #d2d2d2;">
+                    <input ng-model="fechaFinal" type="text" class="angular-datepicker-input" ng-change="validDate(fechaFinal)" placeholder="Fecha Final"/>
+                </datepicker>
+            </div>
+            </div>
         </div>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Tipo de Insumo</th>
-                        <th>Valor</th>
-                        <th>Observación</th>
-                        <th></th>
-                    </tr>
-                </thead>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <p class="card-title">Rutas Recientes</p>
+            <div class="table-responsive">
+                <div id="recent-rutes-listing_wrapper"
+                    class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                 
-                <tbody>
-                    <tr ng-repeat="colaborador in listColaboradores | filter:q as results track by colaborador.General.Nombre | limitTo: 100"
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="recent-rutes-listing" class="table dataTable no-footer" role="grid">
+                                <thead class="table-header">
+                                    <tr role="row">
+                                        <th>index</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="recent-rutes-listing" rowspan="1" colspan="1" style="width: 152.35px;" aria-sort="ascending" aria-label="Colaborador: activate to sort column descending">Colaborador</th>
+                                        <th class="sorting" tabindex="0" aria-controls="recent-rutes-listing" rowspan="1" colspan="1" style="width: 197.633px;" aria-label="Departamento: activate to sort column ascending">Departamento</th>
+                                        <th class="sorting" tabindex="0" aria-controls="recent-rutes-listing" rowspan="1" colspan="1" style="width: 139.083px;" aria-label="Municipio: activate to sort column ascending">Municipio</th>
+                                        <th class="sorting" tabindex="0" aria-controls="recent-rutes-listing" rowspan="1" colspan="1" style="width: 66.65px;" aria-label="Fecha de Salida: activate to sort column ascending">Fecha de Salida</th>
+                                        <th class="sorting" tabindex="0" aria-controls="recent-rutes-listing" rowspan="1" colspan="1" style="width: 101.817px;" aria-label="Casos: activate to sort column ascending">Casos</th>
+                                        <th class="sorting" tabindex="0" aria-controls="recent-rutes-listing" rowspan="1" colspan="1" style="width: 153.2px;" aria-label="Accion: activate to sort column ascending">Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr role="row" ng-repeat="ruta in listRutas | filter:q as results track by $index"
                         ng-cloak>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+                        <td>{{((CURRENT_PAGE - 1) * ITEMS_PER_PAGE) + ($index + 1)}}</td>
+                                        <td class="sorting_1">{{ruta.Colaborador.General.Nombre}} {{ruta.Colaborador.General.Apellido}}</td>
+                                        <td>{{ruta.Demografia.Departamento}}</td>
+                                        <td>{{ruta.Demografia.Municipio}}</td>
+                                        <td>{{ruta.FechaSalida|date:dateFormat}}</td>
+                                        <td><span ng-repeat="caso in ruta.Casos  track by $index" class="m-1 badge badge-pill badge-green">{{caso}}</span></td>
+                                        <td>
+                                            <a class="actionBtn" ng-click="log(ruta)" ><i class="fas fa-info-circle"></i></a>
+                                            <a class="actionBtn"><i class="fas fa-pencil-alt"></i></a>
+                                            <a class="actionBtn"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row d-flex- justify-content-center">
+                        <div data-pagination="" data-num-pages="NUMBER_OF_PAGES" data-current-page="CURRENT_PAGE" data-max-size="ITEMS_PER_PAGE"
+                            data-boundary-links="true"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

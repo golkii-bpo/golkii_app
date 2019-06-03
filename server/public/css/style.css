@@ -10006,6 +10006,9 @@ pre code {
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f3f3f3;
 }
+.table-dark-striped tbody tr:nth-of-type(odd) {
+  background-color: #d9d9d9;
+}
 
 .table-hover tbody tr:hover {
   color: #212529;
@@ -13332,7 +13335,6 @@ a.badge-success:focus, a.badge-success.focus {
   color: #fff;
   background-color: #7859df;
 }
-
 a.badge-info:hover, a.badge-info:focus {
   color: #fff;
   background-color: #552ed7;

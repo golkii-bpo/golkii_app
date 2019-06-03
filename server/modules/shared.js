@@ -444,3 +444,12 @@ const toDate = (dateStr,splitter) => {
     const [day, month, year] = dateStr.split(splitter)
     return new Date(year, month - 1, day)
 }
+
+// Metodo para la carga del SWAL de error
+const errorSWAL = (text) => {
+    Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: text
+    })
+}
