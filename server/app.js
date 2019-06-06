@@ -23,13 +23,15 @@ const logger = winston.createLogger({
 //View Config
 app.set('views',path.join(__dirname,'/views'));
 app.set('view engine', 'ejs');
-app.set('layout', 'layouts/main-layout');
+app.set('layout', path.join(__dirname, '/views/layouts/main-layout'));
 app.use(ejsLayouts);
 
+console.log(app.get('env'));
 //Status Resources
 app.use('/resources',express.static(path.join(__dirname,'/public'))); //agregar resource
-app.use('/modules', express.static(path.join(__dirname,'./modules'))); //agregar resource
-
+app.use('/modules', express.static(path.join(__dirname, './modules'))); //agregar resource
+app.use('/middleware', express.static(path.join(__dirname,'./middleware'))); //agregar resource
+app.use('/directives', express.static(path.join(__dirname, './directives'))); //agregar resource
 
 //Logger
 app.use(morgan('dev'));

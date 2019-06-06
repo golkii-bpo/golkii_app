@@ -1,0 +1,162 @@
+/* REGION NG PAGESLIDE */
+
+html {
+    overflow-x: hidden;
+}
+.ng-pageslide {
+    background: #eee;
+}
+body.ng-pageslide-body-open::before {
+    content: '.';
+    display: block;
+    position: fixed;
+    top: 0;
+    background-color: rgb(0,0,0);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    opacity: 0.5;
+    transition: opacity 1s;
+    opacity: 0.5;
+    pointer-events: all;
+}
+body.ng-pageslide-body-closed::before {
+    transition: opacity 1s;
+    content: '.';
+    display: block;
+    position: fixed;
+    top: 0;
+    background-color: rgb(0,0,0);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+}
+#container1, #container2 {
+    width: 100%;
+    height: 20rem;
+    border: 1px solid lightGrey;
+}
+/* ENDREGION NG PAGESLIDE */
+select::-ms-expand {
+    display: none;
+}
+.angular-datepicker > .angular-datepicker-input{
+    margin: -11px -22px;
+    padding: 11px 22px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: none;
+}
+.ng-pageslide > div:first-of-type{
+    margin-top: 3.7em !important;
+}
+.ng-pageslide .title-wrapper{
+    height: 100px;
+}
+.table-cell{
+    border-top-width: 0px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    border-bottom-width: 0px !important;
+}
+.ng-pageslide .table-responsive{
+    margin-left: 17px;
+}
+.ng-pageslide .table-responsive button{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 50%;
+    padding: 9px 9px;
+    border: #4d83ff solid 2px;
+    background-color: #fff;
+}
+
+
+.input-group-text-select {
+        display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.input-group-text{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    left: -1px;
+    margin-left: -2px;
+}
+.form-group>.input-group .number{
+    padding: 0 10px !important;
+}
+.form-control{
+    padding: 11px 1.375rem !important;
+}
+.roundBtn{
+    padding: 4px 10px;
+    top: 3px;
+    position: absolute;
+    border-radius: 50%;
+}
+.fa-trash{
+    fill: #f2f2f2;
+}
+.input-group button.select{
+    color: #ffaaaa;
+    background-color: #282f3a;
+}
+.actionBtn{
+    padding: 5px;
+}
+.actionBtn:hover .fa-info-circle path{
+    fill: blue;
+}
+.actionBtn:hover .fa-pencil-alt path{
+    fill: green;
+}
+.actionBtn:hover .fa-trash path{
+    fill: red;
+}
+.table-header{
+    background-color: #3498db;
+    color: #fff;
+}
+.badge-green{
+    color: #fff;
+    background-color: #117a65 !important;
+}

@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-pageslide-directive": "^2.2.0",
+    "angularjs-datepicker": "^2.1.23",
     "config": "^3.0.1",
     "debug": "^4.1.1",
     "dotenv": "^7.0.0",
@@ -20,6 +22,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.3",
     "nodemon": "^1.18.10"
   }
 }

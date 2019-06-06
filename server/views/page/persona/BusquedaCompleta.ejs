@@ -55,33 +55,33 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Nombre</label>
+                <label class="col-sm-3 my-auto">Nombre</label>
                 <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.general.nombre}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Cedula</label>
-                <div class="col-sm-6">
+                <label class="col-sm-3 my-auto">Cedula</label>
+                <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.general.cedula}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Edad</label>
-                <div class="col-sm-6">
-                  <div class="form-control form-control-sm">{{info.general.edad}}</div>
+                <label class="col-sm-3 my-auto">Sexo</label>
+                <div class="col-sm-9">
+                  <div class="form-control form-control-sm">{{info.general.sexo}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Sexo</label>
-                <div class="col-sm-6">
-                  <div class="form-control form-control-sm">{{info.general.sexo}}</div>
+                <label class="col-sm-3 my-auto">Edad</label>
+                <div class="col-sm-9">
+                  <div class="form-control form-control-sm">{{info.general.edad}}</div>
                 </div>
               </div>
             </div>
@@ -89,27 +89,27 @@
           <br>
           <h4 class="card-title text-primary">Datos Demográficos</h4>
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Departamento</label>
-                <div class="col-sm-7">
+                <label class="col-sm-3 my-auto">Departamento</label>
+                <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.demografia.departamento}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Municipio</label>
-                <div class="col-sm-7">
+                <label class="col-sm-3 my-auto">Municipio</label>
+                <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.demografia.municipio}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-12">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Domicilio</label>
-                <div class="col-sm-7">
-                  <div class="form-control form-control-sm">{{info.demografia.domicilio}}</div>
+                <label class="col-sm-2 my-auto">Domicilio</label>
+                <div class="col-sm-10">
+                  <div class="form-control form-control" style="overflow: auto;">{{info.demografia.domicilio}}</div>
                 </div>
               </div>
             </div>
@@ -119,12 +119,12 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Ingresos Extras</label>
+                <label class="col-sm-auto my-auto">Ingreso INSS</label>
                 <div class="col-sm-7">
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
-                        id="inputGroup-sizing-sm">$</span>
+                        id="inputGroup-sizing-sm">C$</span>
                     </div>
                     <div class="form-control form-control-sm">{{info.ingresos.salarioInss}}</div>
                   </div>
@@ -133,14 +133,17 @@
             </div>
             <div class="col-md-4">
               <div class="form-group row">
-                <label class="col-sm-auto my-auto">Ingresos Extras</label>
+                <label class="col-sm-auto my-auto">Trabajador Activo</label>
                 <div class="col-sm-7">
                   <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
+                    <!-- <div class="input-group-prepend">
                       <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
-                        id="inputGroup-sizing-sm">$</span>
+                        id="inputGroup-sizing-sm">C$</span>
+                    </div> -->
+                    <div class="form-control form-control-sm">
+                      <p ng-if="info.ingresos.isWorking">Si</p>
+                      <p ng-if="!info.ingresos.isWorking">No</p>
                     </div>
-                    <div class="form-control form-control-sm">{{info.ingresos.salario}}</div>
                   </div>
                 </div>
               </div>
@@ -151,7 +154,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-9 grid-margin stretch-card">
+    <div class="col-lg-8 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">
@@ -164,19 +167,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Claro</td>
-                  <td><label class="badge badge-primary">53275531</label></td>
+                <tr ng-repeat="phone in info.phones" ng-if="phone.Operadora">
+                  <td>{{phone.Operadora}}</td>
+                  <td ng-switch="phone.Operadora">
+                    <label ng-switch-when="Movistar" class="badge badge-primary">{{phone.Telefono}}</label>
+                    <label ng-switch-when="Claro" class="badge badge-danger">{{phone.Telefono}}</label>
+                  </td>
                   <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
                 </tr>
-                <tr>
-                  <td>Movistar</td>
-                  <td><label class="badge badge-danger">53275532</label></td>
-                  <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
-                </tr>
-                <tr>
-                  <td>Movistar</td>
-                  <td><label class="badge badge-primary">53275532</label></td>
+                <tr ng-repeat="phone in info.phones" ng-if="!phone.Operadora">
+                  <td>Desconocido</td>
+                  <td><label class="badge badge-warning">{{phone.Telefono}}</label></td>
                   <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
                 </tr>
               </tbody>
@@ -185,25 +186,33 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 grid-margin stretch-card">
+    <div class="col-lg-4 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
-                  <th class="text-center"><i class="mr-2 fas fa-money-check-alt"></i> Banco</th>
+                  <th class="text-center" colspan="2"><i class="mr-2 fas fa-money-check-alt"></i> Banco</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="text-center">Ficohsa</td>
+                <tr ng-repeat="card in info.cards" >
+                  <td class="text-center" ng-switch="card.bank" colspan="2">
+                    <img ng-switch-when="BAC" style="border-radius: 0" src="/resources/img/BAC.png">
+                    <img ng-switch-when="BDF" style="border-radius: 0" src="/resources/img/BDF.png" />
+                    <img ng-switch-when="LAFISE" style="border-radius: 0;width: 60px" src="/resources/img/Lafise.png" />
+                    <img ng-switch-when="FICOHSA" style="border-radius: 0;height: 26px;width: 80px" src="/resources/img/Ficohsa.png" />
+                    <img ng-switch-when="SIMAN" style="border-radius: 0;width: 90px" src="/resources/img/Siman.png" />
+                    <img ng-switch-when="BANPRO" style="border-radius: 0;width: 60px" src="/resources/img/Banpro.png" />
+                    <p ng-switch-when="Otros">Otros</p>
+                  </td>
                 </tr>
-                <tr>
-                  <td class="text-center">Banpro</td>
-                </tr>
-                <tr>
-                  <td class="text-center">Bac</td>
+                <tr ng-if="info.ingresos.statusCredex">
+                  <td class="text-center">
+                    <img style="border-radius: 0;height: 26px; width: 120px" src="/resources/img/credex.png">
+                  </td>
+                  <td>{{info.ingresos.statusCredex}}</td>
                 </tr>
               </tbody>
             </table>
