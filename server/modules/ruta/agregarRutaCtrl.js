@@ -20,7 +20,7 @@ angular
     scope.selectColaborador = {};
     // Variables auxiliares para Tipos Insumo
     scope.insumo = {
-        db: "",        // Llave dek objeto
+        db: "",        // Llave del objeto
         l: "",         // Label
         p: "",         // Label Position
         d: "",         // Description

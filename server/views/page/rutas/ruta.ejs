@@ -1,4 +1,26 @@
-<div class="content-wrapper" ng-controller="agregarRutaCtrl" ng-init="Init()" ng-cloak>
+<div class="content-wrapper" ng-controller="rutaCtrl" ng-init="Init()" ng-cloak>
+    <!-- aside selector -->
+    <pageslide ps-open="showPageslide" ps-body-class="false" ps-push="false" ps-click-outside="false" ps-size="400px"
+        style="overflow: scroll;">
+        <div class="filter-wrapper bg-primary d-flex justify-content-center flex-column">
+            <input type="text" class="form-control" ng-model="q" aria-label="filter listColaboradores"
+                placeholder="Busqueda de persona.">
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr ng-repeat="colaborador in listColaboradores | filter:q as results track by colaborador.General.Nombre | limitTo: 100"
+                        ng-cloak>
+                        <td class="table-cell">
+                            <button type="button" class="btn btn-primary" ng-click="select(colaborador)"></button>
+                            {{colaborador.General.Nombre.concat(" ",colaborador.General.Apellido)}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </pageslide>
+    <!-- end aside selector -->
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
