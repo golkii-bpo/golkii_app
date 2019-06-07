@@ -71,4 +71,12 @@ angular
         }
         scope.log = (e) =>{console.log(e);
         }
+
+        scope.redirect = (id) => {
+            console.log(id);
+
+            if (id) {
+                window.location.href = `/app/ruta/${id}`;
+            }
+        }
     }]);

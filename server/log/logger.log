@@ -16,3 +16,19 @@
 {"message":"Could not find the include file \"(&#39;../partials/scripts&#39;)\"","level":"error"}
 {"message":"Failed to lookup view \"page/rutas/ruta?1\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
 {"message":"Failed to lookup view \"page/login/reset\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta#/:id\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta:asd\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/:asd\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/:asd\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Failed to lookup view \"page/rutas/ruta/\" in views directory \"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views\"","level":"error"}
+{"message":"Cannot set headers after they are sent to the client","level":"error"}
+{"message":"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views/page/rutas/ruta.ejs:3\n    1| <div class=\"content-wrapper\" ng-controller=\"rutaCtrl\" ng-init=\"Init()\" ng-cloak>\n    2|     <script>\n >> 3|         params =  \"<% -JSON > stringify(params) %>\"\n    4|     </script>\n    5|     <!-- aside selector -->\n    6|     <pageslide ps-open=\"showPageslide\" ps-body-class=\"false\" ps-push=\"false\" ps-click-outside=\"false\" ps-size=\"400px\"\n\nstringify is not defined","level":"error"}
+{"message":"/Users/SSalgado/Develop/Git/Golkii/golkii_app/server/views/page/rutas/ruta.ejs:3\n    1| <div class=\"content-wrapper\" ng-controller=\"rutaCtrl\" ng-init=\"Init()\" ng-cloak>\n    2|     <script>\n >> 3|         const ruta =  \"<%=id%>\"\n    4|     </script>\n    5| \n    6|     <div class=\"row\">\n\nid is not defined","level":"error"}

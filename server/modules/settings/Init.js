@@ -1,2 +1,2 @@
-angular.module('appGolkii', ["pageslide-directive", "720kb.datepicker","ui.bootstrap"])
-
+angular
+    .module('appGolkii', ["pageslide-directive", "720kb.datepicker","ui.bootstrap"]);

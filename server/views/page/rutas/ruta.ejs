@@ -1,33 +1,12 @@
-<div class="content-wrapper" ng-controller="rutaCtrl" ng-init="Init()" ng-cloak>
-    <!-- aside selector -->
-    <pageslide ps-open="showPageslide" ps-body-class="false" ps-push="false" ps-click-outside="false" ps-size="400px"
-        style="overflow: scroll;">
-        <div class="filter-wrapper bg-primary d-flex justify-content-center flex-column">
-            <input type="text" class="form-control" ng-model="q" aria-label="filter listColaboradores"
-                placeholder="Busqueda de persona.">
-        </div>
-        <div class="table-responsive">
-            <table class="table">
-                <tbody>
-                    <tr ng-repeat="colaborador in listColaboradores | filter:q as results track by colaborador.General.Nombre | limitTo: 100"
-                        ng-cloak>
-                        <td class="table-cell">
-                            <button type="button" class="btn btn-primary" ng-click="select(colaborador)"></button>
-                            {{colaborador.General.Nombre.concat(" ",colaborador.General.Apellido)}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </pageslide>
-    <!-- end aside selector -->
+<div class="content-wrapper" ng-controller="rutaCtrl" ng-init="ruta =  '<%=ruta%>'; Init()" ng-cloak>
+
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Modificar registro de Rutas</h4>
+                    <h4 class="card-title">Visualizar registro de Rutas</h4>
                     <p class="card-description">
-                        Formulario que permite realizar modificacion en el registro de las rutas.
+                        Formulario que permite visualizar en el registro de las rutas.
                     </p>
                 </div>
             </div>
@@ -47,11 +26,7 @@
                                     </div>
                                     <div class="form-control" aria-label="Persona" aria-describedby="Persona"
                                         style="height: 40px !important;">
-                                        {{selectColaborador.General.Nombre.concat(' ',selectColaborador.General.Apellido)}}
-                                    </div>
-                                    <div class="input-group-append" aria-describedby="Persona">
-                                        <button class="btn btn-outline-dark form-control" type="button"
-                                            ng-click="togglesidebar()">...</button>
+                                        {{res.Colaborador.General.Nombre.concat(' ',res.Colaborador.General.Apellido)}}
                                     </div>
                                 </div>
                             </div>

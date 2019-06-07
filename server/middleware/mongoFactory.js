@@ -32,6 +32,9 @@ angular
             if (!page && itemsPerPage) return http.Get(factory, `rutas?page=${defaultPage}&size=${itemsPerPage}`);
             if (page && itemsPerPage) return http.Get(factory, `/rutas?page=${page}&size=${itemsPerPage}`);
         }
+        api.getRuta = (id) => {
+            return http.Get(factory,`/rutas/${id}`);
+        }
 // #endregion Rutas
         return api;
     }])

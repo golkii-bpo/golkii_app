@@ -9,8 +9,8 @@ rutasRoute
     return res.render('page/rutas/rutas',{title: title});
 }));
 rutasRoute
-    .get('/:id([a-zA-Z0-9_]+)', errorHandler(async (req, res) => {
-    return res.render('page/rutas/ruta', { title: title, id: req.params.id});
+    .get('/:id([a-zA-Z0-9]+)', errorHandler(async (req, res) => {
+        return res.render(`page/rutas/ruta`, { title: title, ruta: req.params.id});
 }));
 rutasRoute
 .get('/agregar', errorHandler(async (req, res) => {
