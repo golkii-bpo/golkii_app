@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <%- include('../partials/headerLogin') %>
-    <%- include('../partials/application')%>
+    <%- include('../partials/login/app-login') %>
+    <%- include('../partials/login/header')%>
 </head>
 <body ng-app="appGolkii" class="my-login-page">
     <section class="h-100">
@@ -21,7 +21,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
+    </section>
+    <%- include('../partials/login/scripts') %>
 </body>
 
 </html>
