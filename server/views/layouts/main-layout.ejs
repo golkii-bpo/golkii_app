@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <%- include('../partials/header') %>
-    <%- include('../partials/application')%>
+  <%- include('../partials/general/header') %>
+  <%- include('../partials/application/app')%>
 </head>
+
 <body ng-app="appGolkii">
   <div class="container-scroller">
-    <%- include('../partials/navbar')%>
+    <%- include('../partials/application/navbar')%>
     <div class="container-fluid page-body-wrapper">
-      <%-include('../partials/sidebar')%>
+      <%-include('../partials/application/sidebar')%>
       <div class="main-panel">
         <%-body%>
-        <%- include('../partials/footer') %>
       </div>
-      <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
   </div>
-    <%- include('../partials/scripts')%>
+  <%- include('../partials/application/scripts')%>
 </body>
 
 </html>
