@@ -81,6 +81,8 @@ angular
             factory.getColaboradores()
         ])
         .then((data)=>{
+            console.log("data",data);
+            
             // Llenado de listas de seleccion
             // Llenado de lista de colaboradores desde la base de datos
             fillColaboradores(data[0].data.value);

@@ -76,7 +76,7 @@ angular
             console.log(id);
 
             if (id) {
-                window.location.href = `/app/ruta/${id}`;
+                window.location.href = `/app/ruta/${id}/visualizar`;
             }
         }
     }]);
