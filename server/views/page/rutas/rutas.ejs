@@ -40,9 +40,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr role="row" ng-repeat="ruta in listRutas | filter:q as results track by $index"
-                        ng-cloak>
-                        <td>{{((CURRENT_PAGE - 1) * ITEMS_PER_PAGE) + ($index + 1)}}</td>
+                                    <tr role="row" ng-repeat="ruta in listRutas | filter:q as results track by $index" ng-cloak>
+                                        <td>{{((CURRENT_PAGE - 1) * ITEMS_PER_PAGE) + ($index + 1)}}</td>
                                         <td class="sorting_1">{{ruta.Colaborador.General.Nombre}} {{ruta.Colaborador.General.Apellido}}</td>
                                         <td>{{ruta.Demografia.Departamento}}</td>
                                         <td>{{ruta.Demografia.Municipio}}</td>
@@ -58,6 +57,7 @@
                             </table>
                         </div>
                     </div>
+                   
                     <div class="row d-flex- justify-content-center">
                         <div data-pagination="" data-num-pages="NUMBER_OF_PAGES" data-current-page="CURRENT_PAGE" data-max-size="ITEMS_PER_PAGE"
                             data-boundary-links="true"></div>

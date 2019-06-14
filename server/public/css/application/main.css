@@ -167,3 +167,60 @@ select::-ms-expand {
     color: #fff;
     background-color: #117a65 !important;
 }
+
+.pagination ul{
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.pagination li {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    cursor: pointer;
+}
+.pagination li:hover{
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+.pagination li:first-child,
+.pagination li:last-child,
+.pagination li:nth-child(2),
+.pagination li:nth-last-child(2){
+    margin: 1rem 0.5rem;
+}
+.pagination li:not(:first-child):not(:last-child):not(:nth-child(2)):not(:nth-last-child(2)){
+    margin: 1rem 0;
+}
+.pagination li:not(:first-child):not(:last-child):not(:nth-child(2)):not(:nth-last-child(2)):not(:nth-child(3)){
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+.pagination li:not(:first-child):not(:last-child):not(:nth-child(2)):not(:nth-last-child(2)):not(:nth-last-child(3)){
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+.pagination .active{
+    background-color: #117a65;
+}
