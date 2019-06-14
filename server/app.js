@@ -8,6 +8,7 @@ const config = require('config');
 const path = require('path');
 const morgan = require('morgan');
 const winston = require('winston');
+const chalk = require('chalk');
 
 //Variables de Servidor
 const app = express();
@@ -26,20 +27,19 @@ app.set('view engine', 'ejs');
 app.set('layout', path.join(__dirname, '/views/layouts/main-layout'));
 app.use(ejsLayouts);
 
-console.log(app.get('env'));
-//Status Resources
-app.use('/resources',express.static(path.join(__dirname,'/public'))); //agregar resource
-app.use('/modules', express.static(path.join(__dirname, './modules'))); //agregar resource
-app.use('/middleware', express.static(path.join(__dirname,'./middleware'))); //agregar resource
-app.use('/directives', express.static(path.join(__dirname, './directives'))); //agregar resource
-
 //Logger
 app.use(morgan('dev'));
 
 //Router
-app.use('/app',router);
+app.use('/',router);
+//Status Resources
+app.use('/resources', express.static(path.join(__dirname, '/public'))); //agregar resource
+app.use('/modules', express.static(path.join(__dirname, './modules'))); //agregar resource
+app.use('/middleware', express.static(path.join(__dirname, './middleware'))); //agregar resource
+app.use('/directives', express.static(path.join(__dirname, './directives'))); //agregar resource
+// app.use('/app',router);
 app.use('*',(req,res)=>{
-    return res.redirect('/app/error');
+    return res.redirect('/error');
 });
 
 //Middleware
@@ -51,6 +51,7 @@ app.use((err,req,res,next)=>{
 //Server
 app.listen(config.PORT,()=>{
     if(app.get('env') === 'development'){
-        console.log(`Aplicacion se esta ejecutando en el puerto ${config.PORT}`);
+    	console.clear();
+        console.log(` Aplicacion se esta ejecutando en el puerto ${chalk.bgRedBright(chalk.black(' ' + config.PORT + ' '))}`);
     }
 });
