@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="form-control" aria-label="Cedula" aria-describedby="basic-addon2"
                                         style="height: 40px !important;">
-                                        {{selectColaborador.General.Cedula}}
+                                        {{res.Colaborador.General.Cedula}}
                                     </div>
                                 </div>
                             </div>
@@ -51,12 +51,9 @@
                                         <span class="input-group-text-select" id="FechaSalida">Fecha Salida</span>
                                     </div>
                                     <!-- <input type="text" ng-model="res.FechaSalida" class="form-control" /> -->
-                                    <datepicker date-format="dd/MM/yyyy" date-set={{now}} date-set-hidden="true"
-                                        date-min-limit={{minDate}} date-max-limit={{maxDate}}
-                                        class="form-control angular-datepicker" style="height: 40px !important;">
-                                        <input ng-model="auxDate" type="text" class="angular-datepicker-input"
-                                            ng-change="validDate()" />
-                                    </datepicker>
+                                    <div class="form-control" >
+                                        {{res.FechaData}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -69,10 +66,9 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text-select" for="Depa">Departamento</label>
                                 </div>
-                                <select class="custom-select" id="Depa" ng-model="res.Demografia.Departamento"
-                                    ng-options="k as k  for (k,v) in listDepartamentos"
-                                    ng-change="departamentoChange()">
-                                </select>
+                                <div class="form-control">
+                                    {{res.Demografia.Departamento}}
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -80,71 +76,15 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text-select" for="Muni">Municipio</label>
                                 </div>
-                                <select class="custom-select" id="Muni" ng-model="res.Demografia.Municipio"
-                                    ng-options="Municipio.Nombre as Municipio.Nombre for Municipio in listDepartamentos[res.Demografia.Departamento].Municipios">
-                                </select>
+                                <div class="form-control">
+                                    {{res.Demografia.Municipio}}
+                                </div>
                             </div>
                         </div>
                     </div>
                     <br>
                     <h4 class="card-title text-primary">Insumo</h4>
                     <div class="row">
-                        <!-- Tipo de Insumo -->
-                        <div class="col-12 col-sm-5 col-md-4">
-                            <div class="input-group mb-3">
-                                <!-- 
-                                    LABEL A LA PAR DEL TIPO DE INSUMO HIDE
-                                    <div class="input-group-prepend">
-                                    <label class="input-group-text-select" for="kInsumo">Tipos Insumo</label>
-                                </div> -->
-                                <select class="custom-select" id="kInsumo" ng-model="auxinsumo"
-                                    ng-options="ti.description for ti in listTiposInsumo"
-                                    ng-change="kInsumoChange(auxinsumo)">
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Valor Insumo-->
-                        <div class="col-6 col-sm col-md">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend" ng-if="insumo.p == 'start'">
-                                        <span class="input-group-text-select" id="vInsumo">{{insumo.l}}</span>
-                                    </div>
-                                    <input type="text" ng-model="insumo.v" decimals-only class="form-control" />
-                                    <div class="input-group-append" ng-if="insumo.p == 'end'">
-                                        <span class="input-group-text" id="vInsumo">{{insumo.l}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Kilometraje -->
-                        <div class="col-6 col-sm col-md" ng-if="insumo.db == 'Gasolina'">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <input type="text" ng-model="insumo.km" decimals-only class="form-control" />
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Kms</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Observacion -->
-                        <div class="col col-sm-11 col-md" ng-if="insumo.db != 'Alimento'">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <!-- LABEL A LA PAR DEL CAMPO OBSERVACION HIDE -->
-                                    <!-- <div class="input-group-prepend">
-                                        <span class="input-group-text-select" id="ObvInsumo">Observacion</span>
-                                    </div> -->
-                                    <input type="text" ng-model="insumo.o" placeholder="Observación"
-                                        class="form-control" />
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Add Button -->
-                        <div class="col-1 d-flex flex-row justify-content-end">
-                            <buttton class="roundBtn btn-primary" ng-click="addInsumo()">+</buttton>
-                        </div>
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -153,7 +93,6 @@
                                             <th>Tipo de Insumo</th>
                                             <th>Valor</th>
                                             <th>Observación</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -173,11 +112,6 @@
                                             <td>
                                                 {{Insumo.Observacion}}
                                             </td>
-                                            <td
-                                                style=" max-width: 130px; width: 130px; background: white; border: white solid;">
-                                                <buttton class="btn btn-sm btn-warning" ng-click="delInsumo(Insumo)">
-                                                    Eliminar</buttton>
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -187,24 +121,7 @@
                     <br>
                     <h4 class="card-title text-primary">Casos</h4>
                     <div class="row">
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text-select" for="nCaso">Caso</label>
-                                </div>
-                                <input type="text" ng-model="nCaso" class="form-control text-uppercase"
-                                    maxlength="50" />
-                                <div class="input-group-append" aria-describedby="nCaso">
-                                    <button class="btn btn-outline-dark form-control" type="button"
-                                        ng-click="addCaso(nCaso)">+</button>
-                                    <button class="btn btn-outline-dark form-control" type="button"
-                                        ng-class="{select: enableDelCase}" ng-click="toggleDelCase()">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <span ng-repeat="caso in res.Casos  track by $index" class="m-1 badge badge-pill badge-info"
                                 ng-model="caso" ng-click="delCaso($index)">{{caso}}</span>
                         </div>
@@ -226,10 +143,7 @@
                     </div>
                     <div class="row d-flex justify-content-end">
                         <div class="col-auto">
-                            <a href="/app/ruta/" class="btn btn-danger">Cancelar</a>
-                        </div>
-                        <div class="col-auto">
-                            <Buttom class="btn btn-success" ng-click="submit()">Aceptar</Buttom>
+                            <a href="/ruta/" class="btn btn-warning">Regresar</a>
                         </div>
                     </div>
                 </div>

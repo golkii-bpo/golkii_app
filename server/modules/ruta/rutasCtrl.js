@@ -73,10 +73,8 @@ angular
         }
 
         scope.redirect = (id) => {
-            console.log(id);
-
             if (id) {
-                window.location.href = `/app/ruta/${id}/visualizar`;
+                window.location.href = `/ruta/${id}/visualizar`;
             }
         }
     }]);
