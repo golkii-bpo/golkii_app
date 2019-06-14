@@ -17,7 +17,7 @@ angular
     });
 
     scope.LoadingState = false;
-
+    
     scope.Loading = function (state){
         if(scope.LoadingState != state){
             scope.LoadingState = state;

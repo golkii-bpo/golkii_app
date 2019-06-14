@@ -1,0 +1,81 @@
+/*SideBar*/
+.sidebar {
+    border-right: none !important;
+    background: #F2C12E;
+}
+.sidebar .nav {
+    position: relative;
+    width: 100%;
+    /* width: 100% !important; */
+    /* position: relative; */
+}
+.sidebar .nav.sub-menu {
+    padding: 0px !important;
+}
+.sidebar .nav:not(.sub-menu){
+    margin-top: 0px;
+}
+
+.sidebar .nav:not(.sub-menu) > .nav-item {
+    border-bottom: none !important;
+}
+.sidebar .nav .sub-menu{
+    padding: 0.5rem 0 !important;
+}
+.sidebar .nav .nav-item .nav-link {
+    color: #ffffff;
+    font-size: 14px;
+}
+.sidebar .nav:not(.sub-menu) > .nav-item:hover > .nav-link{
+    /* color: #ffffff; */
+    color: #1C344C;
+}
+
+.sidebar .nav .nav-item .nav-subitem {
+    background: #fff !important;
+}
+.sidebar .nav.sub-menu .nav-item::before{
+    content: none;
+}
+.sidebar .nav.sub-menu .nav-item .nav-link.active,
+.sidebar .nav.sub-menu .nav-item .nav-link{
+    color:#1C344C !important;
+}
+
+.sidebar .nav .nav-item.active > .nav-link .menu-icon, 
+.sidebar .nav .nav-item.active > .nav-link .menu-title, 
+.sidebar .nav .nav-item.active > .nav-link .menu-arrow {
+    color:#1C344C !important;
+    font-size: 14px;
+}
+.sidebar .nav .nav-item > .nav-link .menu-icon, 
+.sidebar .nav .nav-item > .nav-link .menu-title, 
+.sidebar .nav .nav-item > .nav-link .menu-arrow {
+    color:#ffffff !important;
+    font-size: 16px;
+}
+.sidebar-icon-only .sidebar .nav .nav-item.active > .nav-link .menu-icon, 
+.sidebar-icon-only .sidebar .nav .nav-item.active > .nav-link .menu-arrow{
+    /* color:#ffffff !important; */
+    color:#1C344C !important;
+    font-size: 16px;
+}
+
+.sidebar-icon-only .sidebar .nav .nav-item.active > .nav-subitem {
+    margin: 0px !important;
+    /* margin-left: 1.04rem !important; */
+}
+
+.sidebar-icon-only .sidebar .nav .nav-item.active > .nav-link .menu-title {
+    padding:0px 2rem !important;
+    /* margin-left: 1.04rem !important; */
+    /* margin: 0px auto !important; */
+    color: #fff !important;
+}
+.sidebar-icon-only .sidebar .nav.sub-menu {
+    padding: 0 0 0 1.5rem;
+}
+.sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title{
+    background: #1C344C !important;
+    color:#fff;
+}

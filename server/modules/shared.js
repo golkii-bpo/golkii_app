@@ -406,17 +406,21 @@ const TiposInsumo =
 {
     "Transporte": {
         description:"Viatico de Transporte",
-        label: "Viatico C$",
+        label: "C$",
+        lpos: "start",
         key: "Transporte"
+
     },
     "Alimento": {
         description: "Viatico Alimenticio",
-        label: "Viatico C$",
+        label: "C$",
+        lpos: "start",
         key: "Alimento"
     },
     "Gasolina": {
         description: "Gasolina",
-        label: "Litros",
+        label: "Lt",
+        lpos: "end",
         key: "Gasolina"
     }
 }
@@ -436,3 +440,16 @@ const ramdomRange = (min, max, diffOf) => {
     return v;
 }
 
+const toDate = (dateStr,splitter) => {
+    const [day, month, year] = dateStr.split(splitter)
+    return new Date(year, month - 1, day)
+}
+
+// Metodo para la carga del SWAL de error
+const errorSWAL = (text) => {
+    Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: text
+    })
+}
