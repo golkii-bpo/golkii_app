@@ -7,6 +7,8 @@ angular
         const getApiUrl = (Factory,url)=>{
             var f = Factory === 'core' ? coreApiUrl : mongoApiUrl;
             f += url;
+            console.log("GET REQUEST TO:",f);
+            
             return f;
         }
 

@@ -1,0 +1,80 @@
+<div class="content-wrapper" ng-controller="EndToEnd_CT_Ctrl" ng-init="Init()" ng-cloak>
+    <div class="row">
+        <div class="col-md-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title">Filtro</p>
+                    <div class="row">
+                        <!-- FROM  -->
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="From">Desde</span>
+                                    </div>
+                                    <datepicker date-format="dd/MM/yyyy" date-set={{now}} date-set-hidden="true" date-min-limit={{minDate}}
+                                        date-max-limit={{maxDate}} class="form-control angular-datepicker" style="height: 40px !important;">
+                                        <input ng-model="startDate" type="text" class="angular-datepicker-input" ng-change="validDate(startDate)" />
+                                    </datepicker>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TO  -->
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="to">Hasta</span>
+                                    </div>
+                                    <datepicker date-format="dd/MM/yyyy" date-set={{now}} date-set-hidden="true" date-min-limit={{minDate}}
+                                        date-max-limit={{maxDate}} class="form-control angular-datepicker" style="height: 40px !important;">
+                                        <input ng-model="endDate" type="text" class="angular-datepicker-input" ng-change="validDate(endDate)" />
+                                    </datepicker>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-primary w-100" ng-click="submitDate()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="row">
+        <div class="col-md-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title">Recent Purchases</p>
+                    <div class="table-responsive">
+                        <table id="recent-purchases-listing" class="table table-hover table-striped">
+                            <thead>
+                                <tr role="row">
+                                    <th ng-repeat="header in Headers" class="sorting" style="font-size: 14px;" tabindex="0" aria-controls="recent-purchases-listing" rowspan="1" colspan="1"
+                                           aria-label="Status report: activate to sort column ascending">
+                                        {{header.toUpperCase()}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="D in res" role="row" ng-class-even="'even'" ng-class-odd="'odd'">
+                                    <td ng-repeat="V in D" ng-if="V=='user'" class="sorting_1">
+                                        {{V}}
+                                    </td>
+                                    <td ng-repeat="V in D" ng-if="V!='user'">
+                                        {{V}}
+                                    </td>
+                                </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,12 +21,10 @@ angular
         },
         ingresos:{
             salario:0,
-            salarioInss:0,
-            statusCredex: "",
-            isWorking: false
+            statusCredex: ""
         },
         phones:[],
-        cards:[]
+        banks:[]
     }
     scope.LoadingState = false;
     scope.Loading = function (state) {
@@ -47,7 +45,6 @@ angular
         // Parametros de busqueda
         const Tipo = scope.TipoBusqueda.toString();
         const Busqueda = scope.Busqueda.toString();
-        const Campaign = 'EFNI';
         // Se valida que se haya ingresado el texto a buscar
         if (!Busqueda) {
             Swal.fire({
@@ -60,8 +57,8 @@ angular
         // Segun el tipo de busqueda establecido se valida que llamado al API se realizará
         if (Tipo === 'Cedula' || Tipo === 'Telefono'){
             var P = Tipo === 'Cedula'?
-                factory.getPersonaByCedula(Busqueda,Campaign):
-                factory.getPersonaByTelefono(Busqueda,Campaign);
+                factory.getPersonaByCedula(Busqueda):
+                factory.getPersonaByTelefono(Busqueda);
             P.then((result) => {
                 fillPersona(result.data);
             }).catch((err) => {
@@ -80,6 +77,7 @@ angular
     }
     
     const fillPersona = (data) => {
+        if(!data) return;
         // Binding de informacion
         // Informacion General
         scope.info.general.nombre = titleCase(data.value.datosGenerales.nombre);
@@ -92,9 +90,7 @@ angular
         scope.info.demografia.domicilio = data.value.datosGenerales.domicilio
         // Informacion Financiera
         scope.info.ingresos.salario = data.value.datosGenerales.salario
-        scope.info.ingresos.salarioInss = data.value.datosGenerales.salarioINSS
         scope.info.ingresos.statusCredex = data.value.datosGenerales.statusCredex
-        scope.info.ingresos.isWorking = data.value.datosGenerales.isWorking
         // Numeros de Telefono
         scope.info.phones = [];
         
@@ -103,14 +99,17 @@ angular
             console.log(_obj);
             
             scope.info.phones.push({
-                Telefono: _obj.telefono,
-                Operadora: titleCase(_obj.operadora)
+                Telefono: _obj.numero,
+                Operadora: titleCase(_obj.operadora.name)
             })
         }
-        scope.info.cards = [];
-        for (j in data.value.tarjetas) {
-            let _obj = data.value.tarjetas[j];
-            scope.info.cards.push({ bank: _obj.banco })
+        scope.info.banks = [];
+        for (j in data.value.bancos) {
+            let _obj = data.value.bancos[j];
+            scope.info.banks.push({ bank: _obj.banco })
+            console.log('====================================');
+            console.log(scope.info.banks);
+            console.log('====================================');
         }
     }
 

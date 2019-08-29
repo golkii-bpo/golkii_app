@@ -1,0 +1,33 @@
+<div class="content-wrapper" ng-controller="EndToEnd_CC_Ctrl" ng-init="Init()" ng-cloak>
+    <div class="row">
+        <div class="col-md-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title">Recent Purchases</p>
+                    <div class="table-responsive">
+                        <table id="recent-purchases-listing" class="table table-hover table-striped">
+                            <thead>
+                                <tr role="row">
+                                    <th ng-repeat="header in Headers" class="sorting" style="font-size: 14px;" tabindex="0" aria-controls="recent-purchases-listing" rowspan="1" colspan="1"
+                                           aria-label="Status report: activate to sort column ascending">
+                                        {{header.toUpperCase()}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="D in res" role="row" ng-class-even="'even'" ng-class-odd="'odd'">
+                                    <td ng-repeat="V in D" ng-if="V=='user'" class="sorting_1">
+                                        {{V}}
+                                    </td>
+                                    <td ng-repeat="V in D" ng-if="V!='user'">
+                                        {{V}}
+                                    </td>
+                                </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -25,7 +25,7 @@
                     <label class="form-check-label">
                       <input type="radio" class="form-check-input" name="membershipRadios" ng-model="TipoBusqueda"
                         value="Telefono">
-                      Telefono
+                      Teléfono
                     </label>
                   </div>
                 </div>
@@ -53,7 +53,7 @@
         <div class="card-body">
           <h4 class="card-title text-primary">Información General</h4>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group row">
                 <label class="col-sm-3 my-auto">Nombre</label>
                 <div class="col-sm-9">
@@ -61,7 +61,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
               <div class="form-group row">
                 <label class="col-sm-3 my-auto">Cedula</label>
                 <div class="col-sm-9">
@@ -69,15 +69,15 @@
                 </div>
               </div>
             </div>
-            <div class="col-6">
+            <!-- <div class="col-3">
               <div class="form-group row">
                 <label class="col-sm-3 my-auto">Sexo</label>
                 <div class="col-sm-9">
                   <div class="form-control form-control-sm">{{info.general.sexo}}</div>
                 </div>
               </div>
-            </div>
-            <div class="col-6">
+            </div> -->
+            <div class="col-3">
               <div class="form-group row">
                 <label class="col-sm-3 my-auto">Edad</label>
                 <div class="col-sm-9">
@@ -85,70 +85,67 @@
                 </div>
               </div>
             </div>
-          </div>
-          <br>
-          <h4 class="card-title text-primary">Datos Demográficos</h4>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 my-auto">Departamento</label>
-                <div class="col-sm-9">
-                  <div class="form-control form-control-sm">{{info.demografia.departamento}}</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 my-auto">Municipio</label>
-                <div class="col-sm-9">
-                  <div class="form-control form-control-sm">{{info.demografia.municipio}}</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group row">
-                <label class="col-sm-2 my-auto">Domicilio</label>
-                <div class="col-sm-10">
-                  <div class="form-control form-control" style="overflow: auto;">{{info.demografia.domicilio}}</div>
-                </div>
-              </div>
+            <div class="col justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" ng-class="info.general.sexo" class="sex-logo"
+                style="POSITION: ABSOLUTE;right: 0;top: -30px;" viewBox="0 0 24 24" width="64" height="64">
+                <path
+                  d="M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z">
+                </path>
+              </svg>
             </div>
           </div>
           <br>
-          <h4 class="card-title text-primary">Ingresos</h4>
           <div class="row">
-            <div class="col-md-4">
-              <div class="form-group row">
-                <label class="col-sm-auto my-auto">Ingreso INSS</label>
-                <div class="col-sm-7">
-                  <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                      <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
-                        id="inputGroup-sizing-sm">C$</span>
+            <div class="col-8">
+              <h4 class="card-title text-primary">Datos Demográficos</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-4 my-auto">Departamento</label>
+                    <div class="col-sm-8">
+                      <div class="form-control form-control-sm">{{info.demografia.departamento}}</div>
                     </div>
-                    <div class="form-control form-control-sm">{{info.ingresos.salarioInss}}</div>
                   </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-4 my-auto">Municipio</label>
+                    <div class="col-sm-8">
+                      <div class="form-control form-control-sm">{{info.demografia.municipio}}</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-md-12">
+                  <div class="form-group row">
+                    <label class="col-sm-2">Domicilio</label>
+                    <div class="col-sm-9">
+                      <div class="form-control form-control" style="overflow: auto;">{{info.demografia.domicilio}}</div>
+                    </div>
+                  </div>
+                </div> -->
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="form-group row">
-                <label class="col-sm-auto my-auto">Trabajador Activo</label>
-                <div class="col-sm-7">
-                  <div class="input-group input-group-sm">
-                    <!-- <div class="input-group-prepend">
-                      <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
-                        id="inputGroup-sizing-sm">C$</span>
-                    </div> -->
-                    <div class="form-control form-control-sm">
-                      <p ng-if="info.ingresos.isWorking">Si</p>
-                      <p ng-if="!info.ingresos.isWorking">No</p>
+            <div class="col-4">
+              <h4 class="card-title text-primary">Ingresos</h4>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group row">
+                    <label class="col-sm-auto my-auto">Ingreso INSS</label>
+                    <div class="col-sm-7">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
+                            id="inputGroup-sizing-sm">C$</span>
+                        </div>
+                        <div class="form-control form-control-sm">{{info.ingresos.salario}}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <br>
         </div>
       </div>
     </div>
@@ -162,8 +159,8 @@
               <thead>
                 <tr>
                   <th>Operadora</th>
-                  <th>Telefono</th>
-                  <th class="text-center">Informacion</th>
+                  <th>Teléfono</th>
+                  <th class="text-center">Información</th>
                 </tr>
               </thead>
               <tbody>
@@ -197,8 +194,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="card in info.cards" >
-                  <td class="text-center" ng-switch="card.bank" colspan="2">
+                <tr ng-repeat="bank in info.banks" >
+                  <td class="text-center" ng-switch="bank.bank" colspan="2">
                     <img ng-switch-when="BAC" style="border-radius: 0" src="/resources/img/BAC.png">
                     <img ng-switch-when="BDF" style="border-radius: 0" src="/resources/img/BDF.png" />
                     <img ng-switch-when="LAFISE" style="border-radius: 0;width: 60px" src="/resources/img/Lafise.png" />

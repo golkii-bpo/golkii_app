@@ -10,8 +10,8 @@ angular
     scope.maxDate = Now.toISOString();
     scope.dateFormat = dateFormat;
     // Variables auxiliares de la vista
-    scope.enableDelCase = false; // indica validez para eliminar casos
     scope.auxDate;
+    scope.enableDelCase = false; // indica validez para eliminar casos
     // Listas de seleccion
     scope.listColaboradores = [];
     scope.listDepartamentos = {};

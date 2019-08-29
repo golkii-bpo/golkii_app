@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
+         url('../../fonts/Roboto/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* REGION NG PAGESLIDE */
 
 html {
@@ -223,4 +231,41 @@ select::-ms-expand {
 }
 .pagination .active{
     background-color: #117a65;
+}
+.form-group{
+    margin-bottom: 0 !important;
+}
+.fillPink,
+.Femenino{
+    fill: #F1859C;
+}
+.fillBlue,
+.Masculino{
+    fill: #044E81;
+}
+.grid-margin {
+    margin-bottom: 0.5rem !important;
+}
+.content-wrapper {
+    padding: 1.1rem 1.04rem;
+}
+.card .card-body {
+    padding-top: 0.5rem !important;
+    padding-right: 1.875rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1.875rem !important;
+}
+
+.sex-logo{
+    position: absolute;
+    right: 0;
+    top: -30px;
+}
+
+.sidebar .nav.sub-menu .nav-item .nav-link{
+    padding-left: 40%;
+}
+.activeDepartment{
+    fill: brown;
+    border-bottom: brown 1px solid;
 }
