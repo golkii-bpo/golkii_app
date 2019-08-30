@@ -15,8 +15,8 @@ angular
 //#endregion Busqueda completa
 
 // #region ReportViews
-        api.getEndToEnd_CC = () => {
-            return http.Get(factory,'/Views/EndToEnd/CalledCount')
+        api.getEndToEnd_CC = (from, to) => {
+            return http.Get(factory, `/Views/EndToEnd/CalledCount/${from}/${to}`)
         }
         api.getEndToEnd_CT = (from, to) => {
             return http.Get(factory, `/views/endtoend/CalledTime/${from}/${to}`)
