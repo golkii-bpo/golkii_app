@@ -1,4 +1,7 @@
 'use strict'
-const coreApiUrl = "http://192.168.1.242:5000/api";
-const mongoApiUrl = "http://192.168.1.242:5001/api";
-const TimeOut = 60000; //Milisegundos equivalente a "1 minuto = 60 segundos"
+const   
+    coreApiUrl = "http://192.168.1.242:5000/api",
+    mongoApiUrl = "http://192.168.1.243:8084/api",
+    // coreApiUrl = "http://localhost:5000/api",
+    // mongoApiUrl = "http://localhost:8084/api",
+    TimeOut = 60000; //Milisegundos equivalente a "1 minuto = 60 segundos"

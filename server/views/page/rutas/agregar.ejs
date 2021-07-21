@@ -1,108 +1,24 @@
-<div class="content-wrapper" ng-controller="agregarRutaCtrl" ng-cloak>
+<div class="content-wrapper" ng-controller="agregarRutaCtrl" ng-init="Init()" ng-cloak>
 
     <!-- aside selector -->
-    <pageslide ps-open="checked" ps-body-class ="false" ps-push="false" ps-click-outside="false" style="overflow: scroll;">
-        <div class="title-wrapper bg-primary d-flex justify-content-center flex-column">
-            <h1 class="text-center text-white">Persona</h1>
+    <pageslide ps-open="showPageslide" ps-body-class ="false" ps-push="false" ps-click-outside="false"  ps-size="400px" style="overflow: scroll;">
+        <div class="filter-wrapper bg-primary d-flex justify-content-center flex-column">
+            <input type="text" class="form-control" ng-model="q" aria-label="filter listColaboradores" placeholder="Busqueda de persona." >
         </div>
         <div class="table-responsive">
             <table class="table">
                 <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="1">
-                                    Jacob
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="2">
-                                    Samuel
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="3">
-                                    John
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="4">
-                                        Danilo
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="5">
-                                    Jacob
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="6">
-                                    Samuel
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="7">
-                                    John
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="Persona" checked="true" ng-model="selectedPersona"
-                                        value="8">
-                                    Danilo
-                                </label>
-                            </div>
+                    <tr ng-repeat="colaborador in listColaboradores | filter:q as results track by colaborador.General.Nombre | limitTo: 100" ng-cloak>
+                        <td class="table-cell">
+                            <button type="button" class="btn btn-primary" ng-click="select(colaborador)"></button>
+                            {{colaborador.General.Nombre.concat(" ",colaborador.General.Apellido)}}
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <button type="button" class="btn btn-primary" style="position: fixed; right: 10px; bottom: 25px;">Seleccionar</button>
-        
     </pageslide>
-    <!-- ene aside selector -->
+    <!-- end aside selector -->
 
 
     <div class="row">
@@ -118,211 +34,216 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title text-primary">Información General</h4>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="form-group row">
-                                <label class="col-12 col-sm-3 my-auto">Persona</label>
-                                <div class="col-12 col-sm-9 input-group">
-                                    <div type="text" class="form-control" placeholder="Nombre" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2">
-                                        {{info.general.nombre}}</div>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-dark border " type="button" ng-click="togglesidebar()">...</button>
-                                    </div>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">Información General</h4>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text-select" id="Persona">Persona</span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="form-group row">
-                                <label class="col-sm-3 my-auto">Cedula</label>
-                                <div class="col-sm-9">
-                                    <div class="form-control form-control-sm">{{info.general.cedula}}</div>
+                                <div class="form-control" aria-label="Persona" aria-describedby="Persona" style="height: 40px !important;">
+                                    {{selectColaborador.General.Nombre.concat(' ',selectColaborador.General.Apellido)}}</div>
+                                <div class="input-group-append" aria-describedby="Persona">
+                                    <button class="btn btn-outline-dark form-control" type="button" ng-click="togglesidebar()">...</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text-select" id="basic-addon2">Cedula</span>
+                                </div>
+                                <div class="form-control" aria-label="Cedula" aria-describedby="basic-addon2" style="height: 40px !important;">
+                                    {{selectColaborador.General.Cedula}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text-select" id="FechaSalida">Fecha Salida</span>
+                                </div>
+                                <!-- <input type="text" ng-model="res.FechaSalida" class="form-control" /> -->
+                                <datepicker date-format="dd/MM/yyyy" date-set={{now}} date-set-hidden="true" date-min-limit={{minDate}}
+                                    date-max-limit={{maxDate}} class="form-control angular-datepicker" style="height: 40px !important;">
+                                    <input ng-model="auxDate" type="text" class="angular-datepicker-input" ng-change="validDate()"/>
+                                </datepicker>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <br>
                     <h4 class="card-title text-primary">Datos Demográficos</h4>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 my-auto">Departamento</label>
-                                <div class="col-sm-9">
-                                    <div class="form-control form-control-sm">{{info.demografia.departamento}}</div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text-select" for="Depa" >Departamento</label>
                                 </div>
+                                <select class="custom-select" id="Depa" ng-model="res.Demografia.Departamento" ng-options="k as k  for (k,v) in listDepartamentos" ng-change="departamentoChange()">
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 my-auto">Municipio</label>
-                                <div class="col-sm-9">
-                                    <div class="form-control form-control-sm">{{info.demografia.municipio}}</div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text-select" for="Muni">Municipio</label>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 my-auto">Km recorrido</label>
-                                <div class="col-sm-9">
-                                    <div class="form-control form-control" style="overflow: auto;">
-                                        {{info.demografia.kilometraje}}</div>
-                                </div>
+                               <select class="custom-select" id="Muni" ng-model="res.Demografia.Municipio"
+                                    ng-options="Municipio.Nombre as Municipio.Nombre for Municipio in listDepartamentos[res.Demografia.Departamento].Municipios">
+                                </select> 
                             </div>
                         </div>
                     </div>
                     <br>
                     <h4 class="card-title text-primary">Insumo</h4>
                     <div class="row">
-                        <div class="col-7 col-md-auto">
-                            <div class="form-group row">
-                                <div class="col-auto">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="membershipRadios" ng-model="TipoInsumo"
-                                                value="Cedula">
-                                            Gasolina
-                                        </label>
+                        <!-- Tipo de Insumo -->
+                        <div class="col-12 col-sm-5 col-md-4">
+                            <div class="input-group mb-3">
+                                <!-- 
+                                    LABEL A LA PAR DEL TIPO DE INSUMO HIDE
+                                    <div class="input-group-prepend">
+                                    <label class="input-group-text-select" for="kInsumo">Tipos Insumo</label>
+                                </div> -->
+                                <select class="custom-select" id="kInsumo" ng-model="auxinsumo" ng-options="ti.description for ti in listTiposInsumo" ng-change="kInsumoChange(auxinsumo)">
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Valor Insumo-->
+                        <div class="col-6 col-sm col-md">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend" ng-if="insumo.p == 'start'">
+                                        <span class="input-group-text-select" id="vInsumo">{{insumo.l}}</span>
                                     </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="membershipRadios" ng-model="TipoInsumo"
-                                                value="Telefono">
-                                            Pasaje
-                                        </label>
+                                    <input type="text" ng-model="insumo.v" decimals-only class="form-control" />
+                                    <div class="input-group-append" ng-if="insumo.p == 'end'">
+                                        <span class="input-group-text" id="vInsumo">{{insumo.l}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-5 h-100 col-md-2 offset-md-1">
-                            <div class="form-group form-group-sm row">
-                                <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control form-control-sm text-right" placeholder="Cantidad Insumo" ng-model="Insumo" />
+                        <!-- Kilometraje -->
+                        <div class="col-6 col-sm col-md" ng-if="insumo.db == 'Gasolina'">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" ng-model="insumo.km" decimals-only class="form-control" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Kms</span>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                        <!-- Observacion -->
+                        <div class="col col-sm-11 col-md" ng-if="insumo.db != 'Alimento'">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <!-- LABEL A LA PAR DEL CAMPO OBSERVACION HIDE -->
+                                    <!-- <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="ObvInsumo">Observacion</span>
+                                    </div> -->
+                                    <input type="text" ng-model="insumo.o" placeholder="Observación" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Button -->
+                        <div class="col-1 d-flex flex-row justify-content-end">
+                            <buttton class="roundBtn btn-primary" ng-click="addInsumo()">+</buttton>
+                        </div>
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Tipo de Insumo</th>
+                                            <th>Valor</th>
+                                            <th>Observación</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="Insumo in res.Insumos | limitTo: 100"
+                                            ng-cloak>
+                                            <td class="table-cell" ng-if="Insumo.Tipo != 'Gasolina'">
+                                                {{listTiposInsumo[Insumo.Tipo].description}}
+                                            </td>
+                                            <td class="table-cell" ng-if="Insumo.Tipo == 'Gasolina'">
+                                                {{listTiposInsumo[Insumo.Tipo].description}} (KM = {{Insumo.Kilometro}})
+                                            </td>
+                                            <td ng-if="Insumo.Tipo == 'Gasolina'">
+                                                {{Insumo.Valor}} Lts
+                                            </td>
+                                            <td ng-if="Insumo.Tipo != 'Gasolina'">
+                                                C$ {{Insumo.Valor}}
+                                            </td>
+                                            <td>
+                                                {{Insumo.Observacion}}
+                                            </td>
+                                            <td style=" max-width: 130px; width: 130px; background: white; border: white solid;">
+                                                <buttton class="btn btn-sm btn-warning" ng-click="delInsumo(Insumo)">Eliminar</buttton>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
+                    <br>
+                    <h4 class="card-title text-primary">Casos</h4>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-auto my-auto">Ingreso INSS</label>
-                                <div class="col-sm-7">
-                                    <div class="input-group input-group-sm">
-                                        <div class="input-group-prepend">
-                                            <span
-                                                class="bg-primary border-primary input-group-text text-white py-1 px-2"
-                                                id="inputGroup-sizing-sm">C$</span>
-                                        </div>
-                                        <div class="form-control form-control-sm">{{info.ingresos.salarioInss}}</div>
-                                    </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text-select" for="nCaso">Caso</label>
+                                </div>
+                                <input type="text" ng-model="nCaso" class="form-control text-uppercase" maxlength="50" />
+                                <div class="input-group-append" aria-describedby="nCaso">
+                                    <button class="btn btn-outline-dark form-control" type="button" ng-click="addCaso(nCaso)">+</button>
+                                    <button class="btn btn-outline-dark form-control" type="button" ng-class="{select: enableDelCase}" ng-click="toggleDelCase()">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-auto my-auto">Trabajador Activo</label>
-                                <div class="col-sm-7">
-                                    <div class="input-group input-group-sm">
-                                        <!-- <div class="input-group-prepend">
-                      <span class="bg-primary border-primary input-group-text text-white py-1 px-2"
-                        id="inputGroup-sizing-sm">C$</span>
-                    </div> -->
-                                        <div class="form-control form-control-sm">
-                                            <p ng-if="info.ingresos.isWorking">Si</p>
-                                            <p ng-if="!info.ingresos.isWorking">No</p>
-                                        </div>
+                        <div class="col-6" >
+                            <span ng-repeat="caso in res.Casos  track by $index" class="m-1 badge badge-pill badge-info" ng-model="caso" ng-click="delCaso($index)">{{caso}}</span>
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class="card-title text-primary">Otra Informacion</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="Descripcion">Descripcion</span>
                                     </div>
+                                    <input type="text" ng-model="res.Descripcion" class="form-control" maxlength="255"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-auto">
+                            <a href="/ruta/agregar" class="btn btn-danger">Cancelar</a>
+                        </div>
+                        <div class="col-auto">
+                            <Buttom class="btn btn-success" ng-click="submit()">Aceptar</Buttom>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-8 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Operadora</th>
-                                    <th>Telefono</th>
-                                    <th class="text-center">Informacion</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="phone in info.phones" ng-if="phone.Operadora">
-                                    <td>{{phone.Operadora}}</td>
-                                    <td ng-switch="phone.Operadora">
-                                        <label ng-switch-when="movistar"
-                                            class="badge badge-primary">{{phone.Telefono}}</label>
-                                        <label ng-switch-when="claro"
-                                            class="badge badge-danger">{{phone.Telefono}}</label>
-                                    </td>
-                                    <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
-                                </tr>
-                                <tr ng-repeat="phone in info.phones" ng-if="!phone.Operadora">
-                                    <td>Desconocido</td>
-                                    <td><label class="badge badge-warning">{{phone.Telefono}}</label></td>
-                                    <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-center" colspan="2"><i class="mr-2 fas fa-money-check-alt"></i>
-                                        Banco</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="card in info.cards">
-                                    <td class="text-center" ng-switch="card.bank" colspan="2">
-                                        <img ng-switch-when="BAC" style="border-radius: 0" src="/resources/img/BAC.png">
-                                        <img ng-switch-when="BDF" style="border-radius: 0"
-                                            src="/resources/img/BDF.png" />
-                                        <img ng-switch-when="LAFISE" style="border-radius: 0;width: 60px"
-                                            src="/resources/img/Lafise.png" />
-                                        <img ng-switch-when="FICOHSA" style="border-radius: 0;height: 26px;width: 80px"
-                                            src="/resources/img/Ficohsa.png" />
-                                        <img ng-switch-when="SIMAN" style="border-radius: 0;width: 90px"
-                                            src="/resources/img/Siman.png" />
-                                        <img ng-switch-when="BANPRO" style="border-radius: 0;width: 60px"
-                                            src="/resources/img/Banpro.png" />
-                                        <p ng-switch-when="Otros">Otros</p>
-                                    </td>
-                                </tr>
-                                <tr ng-if="info.ingresos.statusCredex">
-                                    <td class="text-center">
-                                        <img style="border-radius: 0;height: 26px; width: 120px"
-                                            src="/resources/img/credex.png">
-                                    </td>
-                                    <td>{{info.ingresos.statusCredex}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-       
+    
+</div>
+
 </div>

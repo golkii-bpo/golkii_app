@@ -5,12 +5,12 @@ angular
         var factory = 'core';
 
 //#region Busqueda completa
-        api.getPersonaByCedula = (cedula,campaign,callback)=>{
-            http.Get(factory,`/persona/cedula/${cedula}/campaign/${campaign}`,callback);
+        api.getPersonaByCedula = (cedula,campaign)=>{
+            return http.Get(factory,`/persona/cedula/${cedula}/campaign/${campaign}`);
         }
 
-        api.getPersonaByTelefono = (telefono,campaign,callback)=>{
-            http.Get(factory,`/persona/telefono/${telefono}/campaign/${campaign}`, callback)
+        api.getPersonaByTelefono = (telefono,campaign)=>{
+            return http.Get(factory,`/persona/telefono/${telefono}/campaign/${campaign}`)
         }
 //#endregion Busqueda completa
 

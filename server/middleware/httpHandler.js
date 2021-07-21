@@ -4,66 +4,50 @@ angular
 
         handler = {};
 
-        getApiUrl = (Factory)=>{
-            console.log(Factory);
-            return Factory === 'core' ? coreApiUrl : mongoApiUrl;
+        const getApiUrl = (Factory,url)=>{
+            var f = Factory === 'core' ? coreApiUrl : mongoApiUrl;
+            f += url;
+            return f;
         }
 
         /**
          * Este es un middleware para HTTP Post Request
+         *
+        * @param {Establece cual de las API's sera utilizada durante este llamado al procedimiento
          * @param {Endpoint llamado a traves del http request} url
          * @param {Informacion del POST en formato JSON} data
-         * @param {Funcion de retorno del middleware} callback
          */
-        handler.Post = (Factory,url,data,callback)=>{
-            try{
-                APIUrl = getApiUrl(Factory);
-                // Vamos a asumir que el usuario ya esta logeado
-                //TODO: Validar Login de usuario
-                http(
-                    {
-                        method: 'POST',
-                        url: APIUrl + url,
-                        data: data,
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        timeout: TimeOut
-                    }
-                )
-                .then(
-                    (response)  => callback(null, response),
-                    (error)     => callback(error, null)
-                )
-            }
-            catch(error){
-                callback(error,null)
-            }
+        handler.Post = (Factory,url,data)=>{
+            
+            // Vamos a asumir que el usuario ya esta logeado
+            //TODO: Validar Login de usuario
+            return http(
+                {
+                    method: 'POST',
+                    url: getApiUrl(Factory, url),
+                    data: data,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    timeout: TimeOut
+                }
+            )
         }
         /**
         * Este es un middleware para HTTP Post Request
+        * @param {Establece cual de las API's sera utilizada durante este llamado al procedimiento}
         * @param {Endpoint llamado a traves del http request} url
-        * @param {Funcion de retorno del middleware} callback
         */
-        handler.Get = (Factory,url, callback)=>{
-            try {
-                APIUrl = getApiUrl(Factory);
-                http({
-                    "method": "GET",
-                    "url": APIUrl+url,
-                    "headers": {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    }
-                }).then(
-                    (response)  => callback(null, response),
-                    (error)     => callback(error, null)
-                )
-            }
-            catch(error){
-                callback(error,null)
-            }
+        handler.Get = (Factory,url)=>{
+            return http({
+                "method": "GET",
+                url: getApiUrl(Factory, url),
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })
         }
         return handler;
     }])

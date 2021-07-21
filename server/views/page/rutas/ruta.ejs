@@ -1,0 +1,155 @@
+<div class="content-wrapper" ng-controller="rutaCtrl" ng-init="ruta =  '<%=ruta%>'; Init()" ng-cloak>
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Visualizar registro de Rutas</h4>
+                    <p class="card-description">
+                        Formulario que permite visualizar en el registro de las rutas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">Información General</h4>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="Persona">Persona</span>
+                                    </div>
+                                    <div class="form-control" aria-label="Persona" aria-describedby="Persona"
+                                        style="height: 40px !important;">
+                                        {{res.Colaborador.General.Nombre.concat(' ',res.Colaborador.General.Apellido)}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="basic-addon2">Cedula</span>
+                                    </div>
+                                    <div class="form-control" aria-label="Cedula" aria-describedby="basic-addon2"
+                                        style="height: 40px !important;">
+                                        {{res.Colaborador.General.Cedula}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="FechaSalida">Fecha Salida</span>
+                                    </div>
+                                    <!-- <input type="text" ng-model="res.FechaSalida" class="form-control" /> -->
+                                    <div class="form-control" >
+                                        {{res.FechaData}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class="card-title text-primary">Datos Demográficos</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text-select" for="Depa">Departamento</label>
+                                </div>
+                                <div class="form-control">
+                                    {{res.Demografia.Departamento}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text-select" for="Muni">Municipio</label>
+                                </div>
+                                <div class="form-control">
+                                    {{res.Demografia.Municipio}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class="card-title text-primary">Insumo</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Tipo de Insumo</th>
+                                            <th>Valor</th>
+                                            <th>Observación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="Insumo in res.Insumos | limitTo: 100" ng-cloak>
+                                            <td class="table-cell" ng-if="Insumo.Tipo != 'Gasolina'">
+                                                {{listTiposInsumo[Insumo.Tipo].description}}
+                                            </td>
+                                            <td class="table-cell" ng-if="Insumo.Tipo == 'Gasolina'">
+                                                {{listTiposInsumo[Insumo.Tipo].description}} (KM = {{Insumo.Kilometro}})
+                                            </td>
+                                            <td ng-if="Insumo.Tipo == 'Gasolina'">
+                                                {{Insumo.Valor}} Lts
+                                            </td>
+                                            <td ng-if="Insumo.Tipo != 'Gasolina'">
+                                                C$ {{Insumo.Valor}}
+                                            </td>
+                                            <td>
+                                                {{Insumo.Observacion}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class="card-title text-primary">Casos</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <span ng-repeat="caso in res.Casos  track by $index" class="m-1 badge badge-pill badge-info"
+                                ng-model="caso" ng-click="delCaso($index)">{{caso}}</span>
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class="card-title text-primary">Otra Informacion</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text-select" id="Descripcion">Descripcion</span>
+                                    </div>
+                                    <input type="text" ng-model="res.Descripcion" class="form-control"
+                                        maxlength="255" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-auto">
+                            <a href="/ruta/" class="btn btn-warning">Regresar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -170,8 +170,8 @@
                 <tr ng-repeat="phone in info.phones" ng-if="phone.Operadora">
                   <td>{{phone.Operadora}}</td>
                   <td ng-switch="phone.Operadora">
-                    <label ng-switch-when="movistar" class="badge badge-primary">{{phone.Telefono}}</label>
-                    <label ng-switch-when="claro" class="badge badge-danger">{{phone.Telefono}}</label>
+                    <label ng-switch-when="Movistar" class="badge badge-primary">{{phone.Telefono}}</label>
+                    <label ng-switch-when="Claro" class="badge badge-danger">{{phone.Telefono}}</label>
                   </td>
                   <td class="text-center"><i class="fas fa-info-circle fa-lg"></i></td>
                 </tr>

@@ -3,17 +3,16 @@ const errorHandler = require('../../middleware/errorHandler');
 const rutasRoute = express.Router();
 
 module.exports = rutasRoute;
-
+let title = "AppGolkii - Rutas";
 rutasRoute
 .get('/', errorHandler(async (req, res) => {
-    return res.render('page/rutas/rutas',{title: 'AppGolkii - Rutas'});
+    return res.render('page/rutas/rutas',{title: title});
 }));
 rutasRoute
-    .get('/:id([0-9]+)', errorHandler(async (req, res) => {
-    
-        return res.render('page/rutas/ruta', { title: 'AppGolkii - Rutas', id: req.params.id});
+    .get('/:id([a-zA-Z0-9]+)/visualizar', errorHandler(async (req, res) => {
+        return res.render(`page/rutas/ruta`, { title: title, ruta: req.params.id});
 }));
 rutasRoute
 .get('/agregar', errorHandler(async (req, res) => {
-    return res.render('page/rutas/agregar', { title: 'AppGolkii - Rutas' });
+    return res.render('page/rutas/agregar', { title: title });
 }));

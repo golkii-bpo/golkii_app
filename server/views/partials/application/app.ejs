@@ -7,7 +7,11 @@
 <script src="/resources/js/angular.min.js"></script>
 <script src="/resources/js/angular-route.min.js"></script>
 <!-- Librerias -->
+<!-- Libreria Pageslide -->
 <script src="/resources/js/angular-pageslide-directive.min.js"></script>
+<!-- Libreria Angular Bootstrap UI -->
+<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0"
+    src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
 <!-- Angular Inicio APP -->
 <script src="/modules/settings/Init.js"></script>
 <!-- Variables de entorno de la Aplicacion -->
@@ -18,14 +22,25 @@
 <script src="/middleware/httpHandler.js"></script>
 <script src="/middleware/coreFactory.js"></script>
 <script src="/middleware/mongoFactory.js"></script>
+<!-- Directivas propias -->
+<!-- Directivas de tipo atributo -->
+<script src="/directives/aDirectives.js"></script>
+<!-- Directivas de tipo elemento -->
+<script src="/directives/eDirectives.js"></script>
+<!-- Services -->
+<!-- Servicio General para Validaciones -->
+<script src="/modules/generalValidationSrv.js"></script>
+<!-- Sercicio de Ruta -->
+<script src="/modules/ruta/agregarRutaSrv.js"></script>
 <!-- Controladores -->
+
 <!-- Controladores Persona -->
 <script src="/modules/persona/busquedaCompletaCtrl.js"></script>
-<!-- Controladores Login -->
-<script src="/modules/login/loginCtrl.js"></script>
-<script src="/modules/login/forgotCtrl.js"></script>
+
 <!-- Controladores Colaboradores -->
 <script src="/modules/colaborador/agregarColaboradorCtrl.js"></script>
 <!-- Controladores Rutas -->
 <script src="/modules/ruta/agregarRutaCtrl.js"></script>
+<script src="/modules/ruta/rutasCtrl.js"></script>
+<script src="/modules/ruta/rutaCtrl.js"></script>
 

@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "angular-pageslide-directive": "^2.2.0",
+    "angularjs-datepicker": "^2.1.23",
+    "chalk": "^2.4.2",
     "config": "^3.0.1",
     "debug": "^4.1.1",
     "dotenv": "^7.0.0",
